@@ -1,0 +1,45 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+        <br>
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+        <br>
+        {{ form.middle_name.label_tag }}
+        {{ form.middle_name }}
+        <br>
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        <br>
+        {{ form.phone_number.label_tag }}
+        {{ form.phone_number }}
+        <br>
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        <br>
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        <br>
+        {{ form.city.label_tag }}
+        {{ form.city }}
+        <br>
+        {{ form.street.label_tag }}
+        {{ form.street }}
+        <br>
+        {{ form.house_number.label_tag }}
+        {{ form.house_number }}
+        <br>
+        {{ form.apartment_number.label_tag }}
+        {{ form.apartment_number }}
+        <br>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+</form>
+{% endblock %}

@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-17 15:50+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ordersapp/models.py:14
+msgid "first name"
+msgstr "first name"
+
+#: ordersapp/models.py:18
+msgid "last name"
+msgstr "last name"
+
+#: ordersapp/models.py:20
+msgid "e-mail"
+msgstr "e-mail"
+
+#: ordersapp/models.py:21
+msgid "address"
+msgstr "address"
+
+#: ordersapp/models.py:23
+msgid "postal code"
+msgstr "postal code"
+
+#: ordersapp/models.py:25
+msgid "city"
+msgstr "city"
+
+#: ordersapp/templates/ordersapp/order/create.html:4
+#: ordersapp/templates/ordersapp/order/create.html:7
+msgid "Checkout"
+msgstr ""
+
+#: ordersapp/templates/ordersapp/order/create.html:9
+msgid "Your order"
+msgstr ""
+
+#: ordersapp/templates/ordersapp/order/create.html:27
+msgid "Total"
+msgstr ""
+
+#: ordersapp/templates/ordersapp/order/create.html:31
+msgid "Place order"
+msgstr ""
+
+#: ordersapp/urls.py:10
+msgid "create/"
+msgstr ""

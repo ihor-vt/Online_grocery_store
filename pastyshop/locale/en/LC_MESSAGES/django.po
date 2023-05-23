@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-17 21:09+0300\n"
+"PO-Revision-Date: 2023-05-17 18:12+0000\n"
+"Last-Translator:   <admin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: cart/forms.py:11
+msgid "Quantity"
+msgstr "Quantity"
+
+#: couponsapp/forms.py:6
+msgid "Coupon"
+msgstr "Coupon"
+
+#: couponsapp/urls.py:10
+msgid "apply/"
+msgstr "apply/"
+
+#: pastyshop/settings.py:127
+msgid "English"
+msgstr "English"
+
+#: pastyshop/settings.py:128
+msgid "Spanish"
+msgstr "Español"
+
+#: pastyshop/settings.py:129
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: pastyshop/settings.py:130
+msgid "Polish"
+msgstr "Polski"
+
+#: pastyshop/urls.py:29
+msgid "cart/"
+msgstr "cart/"
+
+#: pastyshop/urls.py:30
+msgid "orders/"
+msgstr "orders/"
+
+#: pastyshop/urls.py:31
+msgid "payment/"
+msgstr "payment/"
+
+#: pastyshop/urls.py:32
+msgid "coupons/"
+msgstr "coupons/"
+
+#: paymentapp/urls.py:10
+msgid "process/"
+msgstr "process/"
+
+#: paymentapp/urls.py:11
+msgid "completed/"
+msgstr "completed/"
+
+#: paymentapp/urls.py:12
+msgid "canceled/"
+msgstr "canceled/"
+
+#: shop/templates/shop/base.html:8 shop/templates/shop/base.html:14
+msgid "My shop"
+msgstr "My shop"
+
+#: shop/templates/shop/base.html:19
+msgid "Language"
+msgstr "Language"
+
+#: shop/templates/shop/base.html:34
+msgid "Your cart"
+msgstr "Your cart"
+
+#: shop/templates/shop/base.html:36
+#, python-format
+msgid ""
+"\n"
+"                        %(items)s item, $%(total)s\n"
+"                    "
+msgid_plural ""
+"\n"
+"                        %(items)s items, $%(total)s\n"
+"                    "
+msgstr[0] ""
+"\n"
+"item"
+msgstr[1] ""
+"\n"
+"items"
+
+#: shop/templates/shop/base.html:43
+msgid "Your cart is empty."
+msgstr "Your cart is empty."
+
+#: shop/templates/shop/product/detail.html:20
+msgid "Add to cart"
+msgstr "Add to cart"
+
+#: shop/templates/shop/product/detail.html:25
+msgid "People who bought this also bought"
+msgstr "People who bought this also bought"
+
+#: shop/templates/shop/product/list.html:9
+msgid "Categories"
+msgstr "Categories"
+
+#: shop/templates/shop/product/list.html:12
+msgid "All"
+msgstr "All"
