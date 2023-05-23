@@ -98,9 +98,11 @@
     </header>
     <br > <br >
     <div class="line"></div>
-    <div id="content" style="min-height: 70vh;">
-        {% block content %}
-        {% endblock %}
+    <div class="waiver-of-rights">
+        <div id="content" style="min-height: 70vh;">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
     <br >
     {% include "shop/pagination.html" with page=products %}

@@ -415,5 +415,6 @@ img {
 }
 
 .color-change:hover {
+    transition: background-color 0.3s ease;
     background-color: #fef8f3;
 }
