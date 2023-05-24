@@ -1,7 +1,7 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
 
-from .models import Category, Product
+from .models import Category, Product, Comment
 
 
 @admin.register(Category)
@@ -21,3 +21,10 @@ class ProductAdmin(TranslatableAdmin):
 
     def get_prepopulated_fields(self, request, obj=None):
         return {"slug": ("name",)}
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ["name", "email", "product", "created", "active"]
+    list_filter = ["active", "created", "updated"]
+    search_fields = ["name", "email", "body"]

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-24 10:56+0300\n"
+"POT-Creation-Date: 2023-05-24 17:44+0300\n"
 "PO-Revision-Date: 2023-05-17 18:12+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,7 +179,7 @@ msgid "Personal data"
 msgstr ""
 
 #: authentication/templates/authentication/specific_user.html:17
-#: contactsapp/forms.py:12
+#: contactsapp/forms.py:12 shop/forms.py:43 shop/templates/shop/comment.html:20
 msgid "Name"
 msgstr ""
 
@@ -325,10 +325,11 @@ msgid "Contact us"
 msgstr ""
 
 #: contactsapp/templates/contactsapp/contacts.html:44
+#: shop/templates/shop/comment.html:24
 msgid "Email Address"
 msgstr ""
 
-#: contactsapp/views.py:22
+#: contactsapp/views.py:30
 msgid "Your message has been received. Thank you!"
 msgstr ""
 
@@ -339,6 +340,14 @@ msgstr "Coupon"
 #: couponsapp/urls.py:10
 msgid "apply/"
 msgstr "apply/"
+
+#: mainapp/templates/mainapp/404.html:19
+msgid "The page you are looking for was not found"
+msgstr ""
+
+#: mainapp/templates/mainapp/404.html:20
+msgid "Go back"
+msgstr ""
 
 #: mainapp/templates/mainapp/main.html:36 shop/templates/shop/base.html:32
 #: shop/templates/shop/product/list.html:30
@@ -478,23 +487,23 @@ msgstr "Українська"
 msgid "English"
 msgstr "English"
 
-#: pastyshop/urls.py:29
+#: pastyshop/urls.py:32
 msgid "cart/"
 msgstr "cart/"
 
-#: pastyshop/urls.py:30
+#: pastyshop/urls.py:33
 msgid "orders/"
 msgstr "orders/"
 
-#: pastyshop/urls.py:31
+#: pastyshop/urls.py:34
 msgid "payment/"
 msgstr "payment/"
 
-#: pastyshop/urls.py:32
+#: pastyshop/urls.py:35
 msgid "coupons/"
 msgstr "coupons/"
 
-#: pastyshop/urls.py:36
+#: pastyshop/urls.py:39
 msgid "contacts/"
 msgstr ""
 
@@ -510,20 +519,24 @@ msgstr "completed/"
 msgid "canceled/"
 msgstr "canceled/"
 
-#: shop/forms.py:9
+#: shop/forms.py:10
 msgid "Default sorting"
 msgstr ""
 
-#: shop/forms.py:10
+#: shop/forms.py:11
 msgid "Sort by latest"
 msgstr ""
 
-#: shop/forms.py:11
+#: shop/forms.py:12
 msgid "Sort by price: low to high"
 msgstr ""
 
-#: shop/forms.py:12
+#: shop/forms.py:13
 msgid "Sort by price: high to low"
+msgstr ""
+
+#: shop/forms.py:55 shop/templates/shop/comment.html:28
+msgid "Comment"
 msgstr ""
 
 #: shop/templates/shop/base.html:20
@@ -616,21 +629,33 @@ msgstr ""
 msgid "Do not miss any promotion, subscribe to the newsletter"
 msgstr ""
 
-#: shop/templates/shop/product/detail.html:22
+#: shop/templates/shop/comment.html:15
+msgid "Write a comment"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:23
 #, fuzzy
 #| msgid "Categories"
 msgid "Category"
 msgstr "Categories"
 
-#: shop/templates/shop/product/detail.html:35
+#: shop/templates/shop/product/detail.html:36
 msgid "Add to cart"
 msgstr "Add to cart"
 
-#: shop/templates/shop/product/detail.html:39
+#: shop/templates/shop/product/detail.html:41
 msgid "Description"
 msgstr ""
 
-#: shop/templates/shop/product/detail.html:45
+#: shop/templates/shop/product/detail.html:48
+msgid "Comments"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:67
+msgid "No comments, yet."
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:76
 msgid "People who bought this also bought"
 msgstr "People who bought this also bought"
 

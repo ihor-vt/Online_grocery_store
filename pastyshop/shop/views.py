@@ -1,11 +1,12 @@
+from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
-from .models import Category, Product
+from .models import Category, Product, Comment
 from .recommender import Recommender
 from cart.forms import CartAddProductForm
-from .forms import ProductFilterForm, SearchForm
+from .forms import ProductFilterForm, SearchForm, CommentForm
 
 
 def product_list(request, category_slug=None):
@@ -72,16 +73,16 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, id, slug):
     """
-    The product_detail function takes a request and product ID and slug as arguments.
-    It uses the get_object_or_404() function to retrieve the Product object with the given ID,
-    and it also checks that its slug matches the one in URL. The available field is checked
-    to ensure that only products marked as available are displayed.
+    The product_detail function is responsible for displaying a single product.
+    It takes the id and slug of the product as arguments, fetches it from the database,
+    and passes it to a template along with an add-to-cart form. It also uses Recommender to fetch recommended products.
 
-    :param request: Pass the current request to the view
-    :param id: Retrieve the product from the database
-    :param slug: Retrieve the product from the database
-    :return: A template response that renders the
+    :param request: Get the current request
+    :param id: Get the product from the database
+    :param slug: Get the product from the database
+    :return: A response with the rendered product/detail
     """
+
     language = request.LANGUAGE_CODE
     product = get_object_or_404(
         Product,
@@ -94,6 +95,30 @@ def product_detail(request, id, slug):
     r = Recommender()
     recommended_products = r.suggest_products_for([product], 4)
 
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = None
+            comment = comment_form.save(commit=False)
+            comment.product = product
+            comment.save()
+    comment_form = CommentForm()
+
+    comments = Comment.objects.filter(product=product, active=True)
+    total_comments_count = len(comments)
+
+    # Pagination with 2 comments per page
+    paginator = Paginator(comments, 3)
+    page_number = request.GET.get("page", 1)
+    try:
+        comments = paginator.page(page_number)
+    except PageNotAnInteger:
+        # If page_number is not an integer, deliver the first page
+        comments = paginator.page(1)
+    except EmptyPage:
+        # If page_number is out of range, deliver the last page of results
+        comments = paginator.page(paginator.num_pages)
+
     return render(
         request,
         "shop/product/detail.html",
@@ -101,6 +126,9 @@ def product_detail(request, id, slug):
             "product": product,
             "cart_product_form": cart_product_form,
             "recommended_products": recommended_products,
+            "comment_form": comment_form,
+            "comments": comments,
+            "total_comments_count": total_comments_count,
         },
     )
 
