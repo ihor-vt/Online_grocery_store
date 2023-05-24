@@ -27,7 +27,7 @@
     <input type="hidden" name="paged" value="1">
 </form>
 <div id="main" class="product-list">
-    <h1>{% if category %}{{ category.name }}{% else %}Products
+    <h1>{% if category %}{{ category.name }}{% else %}{% trans "Products" %}
         {% endif %}</h1>
         <div class="product-count">
             <p>Showing {{ products.start_index }}–{{ products.end_index }} of {{ total_products_count }}</p>

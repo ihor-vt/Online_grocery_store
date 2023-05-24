@@ -56,11 +56,11 @@ def registration(request):
 
             
             if password != password2:
-                messages.warning(request, _("Паролі не зівпали"))
+                messages.warning(request, _("The passwords did not match"))
                 return render(request, "authentication/register.html", {"form": form})
             
             if CustomUser.objects.filter(email=email).exists():
-                messages.warning(request, _("Такий аккаунт вже зареєстрований"))
+                messages.warning(request, _("Such an account is already registered"))
                 return redirect("users:registration")
             
             hashed_password = make_password(password)
@@ -72,7 +72,7 @@ def registration(request):
                 last_name=last_name,
             )
             
-            messages.success(request, _("Ви успішно зареєструвалися"))
+            messages.success(request, _("You have successfully registered"))
             return redirect("users:login")
         
         else:
@@ -92,7 +92,7 @@ def login(request):
             password = form.cleaned_data["password"]
 
             if not email or not password:
-                messages.warning(request, "Заповніть усі поля")
+                messages.warning(request, _("Fill in all fields"))
                 return render(request, "authentication/login.html", {"form": form})
 
             user = authenticate(request, email=email, password=password)
@@ -100,7 +100,7 @@ def login(request):
                 login_user(request, user)
                 return redirect("shop:product_list")
             else:
-                messages.warning(request, "Введіть коректні дані")
+                messages.warning(request, _("Enter the correct data"))
                 return render(request, "authentication/login.html", {"form": form})
         else:
             return render(request, "authentication/login.html", {"form": form})

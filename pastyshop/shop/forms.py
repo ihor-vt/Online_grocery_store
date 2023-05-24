@@ -1,15 +1,15 @@
 from django import forms
-from cloudinary.forms import CloudinaryFileField
+from django.utils.translation import gettext_lazy as _
 
 from .models import Product
 
 
 class ProductFilterForm(forms.Form):
     ORDER_CHOICES = [
-        ("menu_order", "Default sorting"),
-        ("date", "Sort by latest"),
-        ("price", "Sort by price: low to high"),
-        ("price-desc", "Sort by price: high to low"),
+        ("menu_order", _("Default sorting")),
+        ("date", _("Sort by latest")),
+        ("price", _("Sort by price: low to high")),
+        ("price-desc", _("Sort by price: high to low")),
     ]
 
     orderby = forms.ChoiceField(
