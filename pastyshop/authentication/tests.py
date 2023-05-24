@@ -1,7 +1,14 @@
-from django.test import TestCase
-
+from django.test import TestCase, Client
+from django.urls import reverse
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+
+from .models import CustomUser
+from .forms import (
+    RegistrationForm,
+    LoginForm,
+    EditUserInformationForm,
+    AddUserInformationForm,
+)
 
 
 class UsersManagersTests(TestCase):
@@ -75,3 +82,54 @@ class UsersManagersTests(TestCase):
             User.objects.create_superuser(
                 email="super@user.com", password="foo", is_superuser=False
             )
+
+
+class FormsTestCase(TestCase):
+    def test_registration_form(self):
+        form_data = {
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "password1": "password123",
+            "password2": "password123",
+        }
+        form = RegistrationForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_login_form(self):
+        form_data = {
+            "email": "john.doe@example.com",
+            "password": "password123",
+        }
+        form = LoginForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_edit_user_information_form(self):
+        form_data = {
+            "first_name": "John",
+            "last_name": "Doe",
+            "middle_name": "Middle",
+            "phone_number": "+380674375471",
+            "city": "City",
+            "street": "Street",
+            "house_number": "123",
+            "apartment_number": "456",
+        }
+        form = EditUserInformationForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_add_ivalid_user_information_form(self):
+        form_data = {
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "phone_number": "+380674375471",
+            "city": "City",
+            "street": "Street",
+            "house_number": "123",
+            "apartment_number": "456",
+            "password1": "password123",
+            "password2": "password123",
+        }
+        form = AddUserInformationForm(data=form_data)
+        self.assertFalse(form.is_valid())
