@@ -14,7 +14,7 @@ class Cart:
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
         # store current applied coupon
-        self.coupon_id = self.session.get('coupon_id')
+        self.coupon_id = self.session.get("coupon_id")
 
     def add(self, product, quantity=1, override_quantity=False):
         """
@@ -149,7 +149,7 @@ class Cart:
         """
         The coupon function returns the coupon object associated with this order.
         If there is no coupon, it returns None.
-        
+
         :param self: Represent the instance of the object itself
         :return: A coupon object if the coupon_id exists
         :doc-author: Ihor Voitiuk
@@ -160,26 +160,27 @@ class Cart:
             except Coupon.DoesNotExist:
                 pass
         return None
-    
+
     def get_discount(self):
         """
         The get_discount function returns the discount amount for a given order.
-        It does this by checking if there is a coupon associated with the order, and if so, it calculates the discount based on that coupon's percentage value.
+        It does this by checking if there is a coupon associated with the order, and
+        if so, it calculates the discount based on that coupon's percentage value.
         If no coupon is associated with an order, then it simply returns 0.
-        
+
         :param self: Refer to the current instance of the class
         :return: The discount amount
         :doc-author: Ihor Voitiuk
         """
         if self.coupon:
-            return (self.coupon.discount / Decimal(100)) \
-                                        * self.get_total_price()
+            return (self.coupon.discount / Decimal(100)) * self.get_total_price()
         return Decimal(0)
-    
+
     def get_total_price_after_discount(self):
         """
-        The get_total_price_after_discount function returns the total price of all products in the cart minus any discounts that may apply.
-        
+        The get_total_price_after_discount function returns the total price of all
+        products in the cart minus any discounts that may apply.
+
         :param self: Access the attributes and methods of the class
         :return: The total price after discount
         :doc-author: Ihor Voitiuk

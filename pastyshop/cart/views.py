@@ -51,6 +51,14 @@ def cart_remove(request, product_id):
     return redirect('cart:cart_detail')
 
 def cart_detail(request):
+    """
+    The cart_detail function is responsible for displaying the contents of the cart.
+    It also displays a form that allows users to apply coupons to their order, and it
+    displays a list of recommended products based on what's in the user's cart.
+    
+    :param request: Get the current session
+    :return: A dictionary with two keys: cart and coupon_apply_form
+    """
     cart = Cart(request)
     for item in cart:
         item['update_quantity_form'] = CartAddProductForm(initial={

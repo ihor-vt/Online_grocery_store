@@ -9,6 +9,16 @@ from .forms import ProductFilterForm, SearchForm
 
 
 def product_list(request, category_slug=None):
+    """
+    The product_list function is responsible for displaying a list of products.
+    It can be filtered by category and sorted by price, name or popularity.
+    The function accepts an optional parameter called category_slug that allows
+    us to filter the product list by a specific category.
+
+    :param request: Get the current request
+    :param category_slug: Filter the products by category
+    :return: A rendered template, which is then displayed to the user
+    """
     filter_form = ProductFilterForm(request.GET)
     orderby = None  # Assign a default value to orderby
 
@@ -61,6 +71,17 @@ def product_list(request, category_slug=None):
 
 
 def product_detail(request, id, slug):
+    """
+    The product_detail function takes a request and product ID and slug as arguments.
+    It uses the get_object_or_404() function to retrieve the Product object with the given ID,
+    and it also checks that its slug matches the one in URL. The available field is checked
+    to ensure that only products marked as available are displayed.
+
+    :param request: Pass the current request to the view
+    :param id: Retrieve the product from the database
+    :param slug: Retrieve the product from the database
+    :return: A template response that renders the
+    """
     language = request.LANGUAGE_CODE
     product = get_object_or_404(
         Product,
@@ -85,6 +106,15 @@ def product_detail(request, id, slug):
 
 
 def products_search(request):
+    """
+    The products_search function is a view that allows users to search for products.
+    It uses the SearchForm form, which contains a single field named query. The user's input
+    is stored in the query variable and then used to filter Product objects using Django's
+    SearchVector and SearchQuery classes.
+
+    :param request: Get the request object
+    :return: A rendered template, but it also contains a form and query variables
+    """
     form = SearchForm()
     query = None
     results = []
