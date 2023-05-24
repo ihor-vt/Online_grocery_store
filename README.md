@@ -24,7 +24,7 @@ The "Online Food Store" project utilizes the following technologies and librarie
 
 ...
 
-# Used Technologies
+## Used Technologies
 
 - [Python](https://www.python.org/): ^3.11
 - [Django](https://www.djangoproject.com/): ^4.2.1
