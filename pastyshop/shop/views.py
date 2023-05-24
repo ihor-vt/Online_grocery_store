@@ -104,7 +104,8 @@ def product_detail(request, id, slug):
             comment.save()
     comment_form = CommentForm()
 
-    comments = Comment.objects.filter(product=product, active=True)
+    # comments = Comment.objects.filter(product=product, active=True)
+    comments = product.comments.filter(active=True)
     total_comments_count = len(comments)
 
     # Pagination with 2 comments per page
