@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+      - redis
+    command: sh -c "./wait-for-it.sh db:5432 -t 1m -- python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=pastyshop.settings.prod
+      - POSTGRES_DB=pastyshop_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pastyshop_passwords
+    networks:
+      - app-network
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=pastyshop_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pastyshop_passwords
+    networks:
+      - app-network
+
+  redis:
+    image: redis
+    command: sh -c "./wait-for-it.sh redis:6379 -t 1m"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

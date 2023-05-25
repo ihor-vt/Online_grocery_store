@@ -11,14 +11,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import environ
-import dj_database_url
 from pathlib import Path
 
 from django.utils.translation import gettext_lazy as _
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env")
@@ -32,15 +31,6 @@ SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  #  env.bool("DEBUG", default=False)
-
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-]
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost",
-]
-
 
 # Application definition
 
@@ -113,16 +103,16 @@ WSGI_APPLICATION = "pastyshop.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mydatabase",
-        "USER": "myuser",
-        "PASSWORD": "mypassword",
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "mydatabase",
+#         "USER": "myuser",
+#         "PASSWORD": "mypassword",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
 
 # DATABASES = {
 #     'default': {

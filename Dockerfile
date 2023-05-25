@@ -1,25 +1,15 @@
-# Docker-команда FROM вказує базовий образ контейнера
-# Наш базовий образ - це Linux з попередньо встановленим python-3.10
+# Використовуємо офіційний базовий образ Python
 FROM python:3.11
 
-# Встановимо змінну середовища
-ENV APP_HOME /app
+# Встановлюємо залежності
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Встановимо робочу директорію усередині контейнера
-WORKDIR $APP_HOME
-
-COPY poetry.lock $APP_HOME/poetry.lock
-COPY pyproject.toml $APP_HOME/pyproject.toml
-
-# Встановимо залежності усередині контейнера
-RUN pip install poetry
-RUN poetry config virtualenvs.create false && poetry install --only main
-
-# Скопіюємо інші файли до робочої директорії контейнера
+# Копіюємо весь проект в контейнер
 COPY . .
+COPY wait-for-it.sh /app/wait-for-it.sh
 
-# Позначимо порт де працює програма всередині контейнера
-EXPOSE 8000
-
-# Запустимо нашу програму всередині контейнера
-CMD ["python", "instagram/manage.py", "runserver", "0.0.0.0:8000"]
+RUN chmod +x wait-for-it.sh
+# Запускаємо команду для міграцій бази даних та стартового сервера
+CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000
