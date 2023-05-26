@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-24 17:44+0300\n"
-"PO-Revision-Date: 2023-05-24 14:47+0000\n"
+"POT-Creation-Date: 2023-05-27 00:06+0300\n"
+"PO-Revision-Date: 2023-05-26 21:06+0000\n"
 "Last-Translator: Admin Admin <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -105,7 +105,7 @@ msgstr "Зберегти зміни"
 #: authentication/templates/authentication/login.html:5
 #: authentication/templates/authentication/login.html:37
 #: authentication/templates/authentication/register.html:54
-#: shop/templates/shop/base.html:50 shop/templates/shop/base.html:144
+#: shop/templates/shop/base.html:50 shop/templates/shop/base.html:146
 msgid "Login"
 msgstr "Вхід"
 
@@ -513,11 +513,11 @@ msgstr ""
 "Приходьте до нас і давайте подбаємо про ваше задоволення і гастрономічні "
 "потреби"
 
-#: mainapp/templates/mainapp/main.html:159 shop/templates/shop/base.html:154
+#: mainapp/templates/mainapp/main.html:159 shop/templates/shop/base.html:156
 msgid "Address"
 msgstr "Адреса"
 
-#: mainapp/templates/mainapp/main.html:160 shop/templates/shop/base.html:155
+#: mainapp/templates/mainapp/main.html:160 shop/templates/shop/base.html:157
 msgid ""
 "Pivfabrucaty. Ternopil region, Kremenets district, Kremenets city, str. 44 "
 "Shevchenko."
@@ -525,19 +525,19 @@ msgstr ""
 "Pivfabrucaty. Тернопільська облась, Кременецький район, м. кременець, вул. "
 "Шевченка 44."
 
-#: mainapp/templates/mainapp/main.html:165 shop/templates/shop/base.html:157
+#: mainapp/templates/mainapp/main.html:165 shop/templates/shop/base.html:159
 msgid "Contact"
 msgstr "Контакт"
 
-#: mainapp/templates/mainapp/main.html:166 shop/templates/shop/base.html:158
+#: mainapp/templates/mainapp/main.html:166 shop/templates/shop/base.html:160
 msgid "Mobile phone: 067-437-69-08"
 msgstr "Мобільний телефон: 067-437-69-08"
 
-#: pastyshop/settings.py:179
+#: pastyshop/settings.py:175
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: pastyshop/settings.py:180
+#: pastyshop/settings.py:176
 msgid "English"
 msgstr "English"
 
@@ -609,15 +609,15 @@ msgstr "Головна"
 msgid "Logout"
 msgstr "Вихід"
 
-#: shop/templates/shop/base.html:49 shop/templates/shop/base.html:145
+#: shop/templates/shop/base.html:49 shop/templates/shop/base.html:147
 msgid "Register"
 msgstr "Реєстрація"
 
-#: shop/templates/shop/base.html:84
+#: shop/templates/shop/base.html:86
 msgid "Your cart"
 msgstr "Ваш кошик"
 
-#: shop/templates/shop/base.html:86
+#: shop/templates/shop/base.html:88
 #, python-format
 msgid ""
 "\n"
@@ -634,11 +634,11 @@ msgstr[1] ""
 "\n"
 "товарів"
 
-#: shop/templates/shop/base.html:93
+#: shop/templates/shop/base.html:95
 msgid "Your cart is empty."
 msgstr "Ваш кошик порожній."
 
-#: shop/templates/shop/base.html:118
+#: shop/templates/shop/base.html:120
 msgid ""
 "We are a family business that grows fresh ve-getables and fruits using "
 "natural fertilizers. Our products do not contain harmful substances and "
@@ -648,35 +648,35 @@ msgstr ""
 "натуральних добрив. Наша продукція не містить шкідливих речовин і генетично "
 "модифікованих організмів, тому вони безпечні для вашого здоров'я"
 
-#: shop/templates/shop/base.html:133
+#: shop/templates/shop/base.html:135
 msgid "Shop"
 msgstr "Магазин"
 
-#: shop/templates/shop/base.html:135
+#: shop/templates/shop/base.html:137
 msgid "Semi-finished products"
 msgstr "Напівфабрикати"
 
-#: shop/templates/shop/base.html:136
+#: shop/templates/shop/base.html:138
 msgid "Vareniki"
 msgstr "Вареники"
 
-#: shop/templates/shop/base.html:137
+#: shop/templates/shop/base.html:139
 msgid "Vegetables"
 msgstr "Овочі"
 
-#: shop/templates/shop/base.html:138
+#: shop/templates/shop/base.html:140
 msgid "Teas"
 msgstr "Чаї"
 
-#: shop/templates/shop/base.html:142
+#: shop/templates/shop/base.html:144
 msgid "Company"
 msgstr "Магазин"
 
-#: shop/templates/shop/base.html:149
+#: shop/templates/shop/base.html:151
 msgid "Newsletter"
 msgstr "Розсилка"
 
-#: shop/templates/shop/base.html:150
+#: shop/templates/shop/base.html:152
 msgid "Do not miss any promotion, subscribe to the newsletter"
 msgstr "Не пропустіть жодної акції, підпишіться на розсилку"
 
@@ -747,6 +747,10 @@ msgstr "Запит"
 #: shop/templates/shop/product/search.html:56
 msgid "Search again"
 msgstr "Шукати знову"
+
+#: shop/templates/shop/product/search.html:62
+msgid "You may be interested in the following products"
+msgstr "Вас можуть зацікавити наступні продукти"
 
 #~ msgid "Spanish"
 #~ msgstr "Іспанська"

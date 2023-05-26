@@ -1,3 +1,5 @@
+import random
+
 from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -92,8 +94,12 @@ def product_detail(request, id, slug):
         available=True,
     )
     cart_product_form = CartAddProductForm()
+
     r = Recommender()
     recommended_products = r.suggest_products_for([product], 4)
+    if recommended_products.count == 0:
+        all_products = Product.objects.filter(available=True)
+        recommended_products = random.sample(list(all_products), min(len(all_products), 5))
 
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
@@ -104,7 +110,8 @@ def product_detail(request, id, slug):
             comment.save()
     comment_form = CommentForm()
 
-    comments = Comment.objects.filter(product=product, active=True)
+    # comments = Comment.objects.filter(product=product, active=True)
+    comments = product.comments.filter(active=True)
     total_comments_count = len(comments)
 
     # Pagination with 2 comments per page
@@ -166,9 +173,22 @@ def products_search(request):
                 .filter(search=search_query)
                 .order_by("-updated")
             )
+    try:
+        r = Recommender()
+        recommended_products = r.suggest_products_for([products], 4)
+    except:
+        recommended_products = []
+    if len(recommended_products) == 0:
+        all_products = Product.objects.filter(available=True)
+        recommended_products = random.sample(list(all_products), min(len(all_products), 5))
 
     return render(
         request,
         "shop/product/search.html",
-        {"form": form, "query": query, "results": results},
+        {
+            "form": form,
+            "query": query,
+            "results": results,
+            "recommended_products": recommended_products,
+        },
     )

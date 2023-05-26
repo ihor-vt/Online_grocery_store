@@ -28,23 +28,23 @@ from paymentapp import webhooks
 
 
 urlpatterns = i18n_patterns(
-    path('admin/', admin.site.urls),
-    path(_('cart/'), include('cart.urls', namespace='cart')),
-    path(_('orders/'), include('ordersapp.urls', namespace='orders')),
-    path(_('payment/'), include('paymentapp.urls', namespace='payment')),
-    path(_('coupons/'), include('couponsapp.urls', namespace='coupons')),
-    path('users/', include('authentication.urls', namespace='users')),
-    path('', include('mainapp.urls', namespace='main')),
-    path('shop', include('shop.urls', namespace='shop')),
-    path(_('contacts/'), include('contactsapp.urls', namespace='contacts')),
-    path('rosetta/', include('rosetta.urls')),
+    path("admin/", admin.site.urls),
+    path(_("cart/"), include("cart.urls", namespace="cart")),
+    path(_("orders/"), include("ordersapp.urls", namespace="orders")),
+    path(_("payment/"), include("paymentapp.urls", namespace="payment")),
+    path(_("coupons/"), include("couponsapp.urls", namespace="coupons")),
+    path("users/", include("authentication.urls", namespace="users")),
+    path("", include("mainapp.urls", namespace="main")),
+    path("shop", include("shop.urls", namespace="shop")),
+    path(_("contacts/"), include("contactsapp.urls", namespace="contacts")),
+    path("rosetta/", include("rosetta.urls")),
 )
 
-urlpatterns += [path('payment/webhook/', webhooks.stripe_webhook,
-                    name='stripe-webhook'),
+urlpatterns += [
+    path("payment/webhook/", webhooks.stripe_webhook, name="stripe-webhook"),
 ]
 
 # handler404 = views.custom_404
 
-if settings.DEBUG:  
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
