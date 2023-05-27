@@ -176,7 +176,7 @@ ul.errorlist {
 }
 
 #content {
-    padding: 0 100px;
+    padding: 0 80px; /* Зменшуємо відстань з ліва і з права */
     overflow: hidden;
 }
 
@@ -210,22 +210,28 @@ ul.errorlist {
     color: #fff;
 }
 
+.empty-space {
+    width: 13px;
+    height: 1px;
+}
+
 #main {
     float: left;
-    width: 96%;
+    width: 90%;
     margin-right: -220px;
     overflow: hidden;
+    padding-right: 40px; /* Додаємо відстань з правої сторони */
 }
 
 .product-list .item {
-    width: calc(33.33% - 60px);
+    width: calc(33.33% - 30px);
     padding: 10px;
     box-sizing: border-box;
     float: left;
     text-align: center;
     line-height: 1.2;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .product-list .item:first-child {
@@ -237,9 +243,20 @@ ul.errorlist {
 }
 
 .product-list .item img {
-    width: 100%;
+    max-width: 100%;
+    height: 300px;
     margin-bottom: 8px;
 }
+
+/* Додано стиль для пустого поля з правої сторони екрану */
+.product-list::after {
+    content: "";
+    display: block;
+    clear: both;
+    width: 15px;
+    height: 1px;
+}
+
 
 .product-detail {
     text-align: justify;
@@ -332,7 +349,8 @@ ul.errorlist {
 }
 
 .recommendations.cart img {
-    width: 120px;
+    width: px;
+    border-radius: 8px;
 }
 
 /* braintree hosted fields */
@@ -418,3 +436,4 @@ img {
     transition: background-color 0.3s ease;
     background-color: #fef8f3;
 }
+

@@ -11,7 +11,7 @@ def main_page(request):
     :param request: Pass the request object to the view
     :return: The main
     """
-    products = Product.objects.filter(available=True)[:4]
+    products = Product.objects.filter(available=True).order_by('?').distinct()[:4]
 
     return render(request, "mainapp/main.html", {"products": products})
 

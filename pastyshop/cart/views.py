@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 
@@ -73,7 +74,9 @@ def cart_detail(request):
                                         cart_products,
                                         max_results=4)
     else:
-        recommended_products = []
+        all_products = Product.objects.filter(available=True)
+        recommended_products = random.sample(list(all_products), min(len(all_products), 4))
+        
     return render(request, 'cart/detail.html', {'cart': cart,
                                                 'coupon_apply_form': coupon_apply_form,
                                                 'recommended_products': recommended_products})

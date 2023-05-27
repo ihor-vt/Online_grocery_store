@@ -67,48 +67,68 @@
     <h2>{% trans "Our menu" %}</h2>
     <ul>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/chebureky.svg' %}" alt="Category 1" />
             <span>{% trans "Chebureky" %}</span>
+            </a>
         </li>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/golubtsi.svg' %}" alt="Category 2" />
             <span>{% trans "Pigeons" %}</span>
+            </a>
         </li>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/kotlety.svg' %}" alt="Category 3" />
             <span>{% trans "Cutlets" %}</span>
+            </a>
         </li>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/kovbasy.svg' %}" alt="Category 3" />
             <span>{% trans "Sausages" %}</span>
+            </a>
         </li>
     </ul>
     <ul>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/mlyntsi.svg' %}" alt="Category 1" />
             <span>{% trans "Pancakes" %}</span>
+            </a>
         </li>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/pelmeni.svg' %}" alt="Category 2" />
             <span>{% trans "Dumplings" %}</span>
+            </a>
         </li>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/perets.svg' %}" alt="Category 3" />
             <span>{% trans "Pepper stuffed" %}</span>
+            </a>
         </li>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/syrnyky.svg' %}" alt="Category 3" />
             <span>{% trans "Cheesecakes" %}</span>
+            </a>
         </li>
     </ul>
     <ul>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/varenyky.svg' %}" alt="Category 3" />
             <span>{% trans "Vareniks" %}</span>
+            </a>
         </li>
         <li>
+            <a href="{% url 'shop:product_list' %}">
             <img src="{% static 'img/zrazy.svg' %}" alt="Category 1" />
             <span>{% trans "Shows" %}</span>
+            </a>
         </li>
     </ul>
 </div>
@@ -122,7 +142,7 @@
         {% for product in products %}
         <div class="dish-card">
             <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
-                alt="{{ product.name }}">
+                alt="{{ product.name }}" style="border-radius: 8px; width: 275px; height: 240px;">
             <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
         </div>
         {% endfor %}

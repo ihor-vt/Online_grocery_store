@@ -3,72 +3,71 @@
 {% load static %}
 
 {% block title %}
-{% if query %}{{ query }}{% else %}{% trans "Search" %}{% endif %}
+    {% if query %}{% trans "Search" %}: {{ query }}{% else %}{% trans "Search" %}{% endif %}
 {% endblock %}
 
 {% block content %}
-<br >
-{% if query %}
-<h1>{% trans "Products containing" %} "{{ query }}"</h1>
-<h3>
-    {% with results.count as total_results %}
-    {% trans "Found" %} {{ total_results }} {% trans "result" %}{{ total_results|pluralize }}
-    {% endwith %}
-</h3>
-<div id="main" class="product-list">
-{% for product in results %}
-<div class="item">
-    <a href="{{ product.get_absolute_url }}">
-        <img
-            src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width = "30" height = "150">
-    </a>
-    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
     <br>
-</div>
-</div>
-{% empty %}
-<p>{% trans "There are no results for your query" %}.</p>
-{% endfor %}
-<br >
-{% else %}
-<h1>{% trans "Search for products" %}</h1>
-<form method="get" id="contactForm" name="contactForm" class="contactForm">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-            <label class="label" for="name">{% trans "Query" %}</label>
-            {{ form.query }}
-            </div>
+    {% if query %}
+        <h1>{% trans "Products containing" %} "{{ query }}"</h1>
+        <h3>
+            {% with results.count as total_results %}
+                {% trans "Found" %} {{ total_results }} {% trans "result" %}{{ total_results|pluralize }}
+            {% endwith %}
+        </h3>
+        <section>
+            <div id="main" class="product-list">
+                {% for product in results %}
+                <div class="item">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" style="border-radius: 8px; width: 265px; height: 230px; margin-left: 20px;">
+                    </a>
+                    <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                    <br>
+                </div>
+            {% empty %}
+                <p>{% trans "There are no results for your query" %}.</p>
+            {% endfor %}
         </div>
-        <div class="col-md-12">
-            <div class="form-group">
-            <input type="submit" value="Search" class="btn btn-primary">
-            <div class="submitting"></div>
-            </div>
-        </div>
-    </div>  
-</form>
-{% endif %}
-<a href="{% url 'shop:products_search' %}">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-        class="bi bi-search" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-    </svg> {% trans "Search again" %}
-</a>
-<br >
-<div class="line"></div>
-{% if recommended_products %}
-<div class="recommendations">
-    <h3>{% trans "You may be interested in the following products" %}:</h3>
-    {% for p in recommended_products %}
-    <div class="item">
-        <a href="{{ p.get_absolute_url }}">
-            <img src="{% if p.image %}{{ p.image.url }}{% else %}
-            {% static 'img/no_image.png' %}{% endif %}">
+        </section>
+        <br>
+    {% else %}
+        <h1>{% trans "Search for products" %}</h1>
+        <form method="get" id="contactForm" name="contactForm" class="contactForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="label" for="name">{% trans "Query" %}</label>
+                        {{ form.query }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="submit" value="Search" class="btn btn-primary">
+                        <div class="submitting"></div>
+                    </div>
+                </div>
+            </div>  
+        </form>
+    {% endif %}
+    {% if recommended_products %}
+    <div class="recommendations">
+        <br >
+        <a href="{% url 'shop:products_search' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg> {% trans "Search again" %}
         </a>
-        <p><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></p>
-    </div>
-    {% endfor %}
-</div>
-{% endif %}
+            <div class="line"></div>
+            <h3>{% trans "You may be interested in the following products" %}:</h3>
+            {% for p in recommended_products %}
+                <div class="item">
+                    <a href="{{ p.get_absolute_url }}">
+                        <img src="{% if p.image %}{{ p.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" style="border-radius: 8px; width: 265px; height: 230px; margin-left: 20px;">
+                    </a>
+                    <p><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

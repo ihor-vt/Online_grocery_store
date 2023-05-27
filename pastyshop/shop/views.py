@@ -30,7 +30,7 @@ def product_list(request, category_slug=None):
 
     category = None
     categories = Category.objects.all()
-    all_products = Product.objects.filter(available=True)
+    all_products = Product.objects.filter(available=True).order_by('?').distinct()
 
     # Apply sorting based on the selected option
     if orderby:
@@ -39,7 +39,7 @@ def product_list(request, category_slug=None):
     total_products_count = all_products.count()
 
     # Pagination with 2 products per page
-    paginator = Paginator(all_products, 20)
+    paginator = Paginator(all_products, 9)
     page_number = request.GET.get("page", 1)
     try:
         products = paginator.page(page_number)
@@ -180,7 +180,7 @@ def products_search(request):
         recommended_products = []
     if len(recommended_products) == 0:
         all_products = Product.objects.filter(available=True)
-        recommended_products = random.sample(list(all_products), min(len(all_products), 5))
+        recommended_products = random.sample(list(all_products), min(len(all_products), 4))
 
     return render(
         request,

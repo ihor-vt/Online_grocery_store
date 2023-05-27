@@ -33,19 +33,21 @@
             <p>Showing {{ products.start_index }}–{{ products.end_index }} of {{ total_products_count }}</p>
         </div>
         <div class="line"></div>
-    {% for product in products %}
-    <div class="item">
-        <a href="{{ product.get_absolute_url }}">
-            <img
-                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width = "30" height = "150">
-        </a>
-        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-        <br>
-        ${{ product.price }}
+        {% for product in products %}
+        <div class="empty-space">
+        <div class="item">
+            <a href="{{ product.get_absolute_url }}">
+                <img
+                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" style="border-radius: 8px; width: 290px; height: 230px; margin-left: 20px;">
+            </a>
+            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+            <br>
+            ${{ product.price }}
+        </div>
+        </div>
+        {% endfor %}
+        <div class="vertical-line"></div>
     </div>
-    {% endfor %}
-    <div class="vertical-line"></div>
-</div>
 </section>
 <br >
 {% endblock %}
