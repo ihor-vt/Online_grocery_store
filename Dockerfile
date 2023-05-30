@@ -1,25 +1,26 @@
-# Docker-команда FROM вказує базовий образ контейнера
-# Наш базовий образ - це Linux з попередньо встановленим python-3.10
-FROM python:3.11
+FROM python:3-alpine AS builder
 
-# Встановимо змінну середовища
-ENV APP_HOME /app
+WORKDIR /app
 
-# Встановимо робочу директорію усередині контейнера
-WORKDIR $APP_HOME
+RUN python3 -m venv venv
+ENV VIRTUAL_ENV=/app/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-COPY poetry.lock $APP_HOME/poetry.lock
-COPY pyproject.toml $APP_HOME/pyproject.toml
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Встановимо залежності усередині контейнера
-RUN pip install poetry
-RUN poetry config virtualenvs.create false && poetry install --only main
+# Stage 2
+FROM python:3-alpine AS runner
 
-# Скопіюємо інші файли до робочої директорії контейнера
-COPY . .
+WORKDIR /app
 
-# Позначимо порт де працює програма всередині контейнера
-EXPOSE 8000
+COPY --from=builder /app/venv venv
+COPY example_django example_django
 
-# Запустимо нашу програму всередині контейнера
-CMD ["python", "pastyshop/manage.py", "runserver", "0.0.0.0:8000"]
+ENV VIRTUAL_ENV=/app/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV PORT=8000
+
+EXPOSE ${PORT}
+
+CMD gunicorn --bind :${PORT} --workers 2 example_django.wsgi

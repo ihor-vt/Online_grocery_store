@@ -2,7 +2,10 @@
 # Editors
 .vscode/
 .idea/
-
+.env
+**.env
+.DS_Store
+**.pyc
 # Vagrant
 .vagrant/
 
