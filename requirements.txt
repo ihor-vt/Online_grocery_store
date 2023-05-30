@@ -71,3 +71,4 @@ whitenoise==6.4.0
 wrapt==1.15.0
 zope.interface==6.0
 zopfli==0.2.2
+djangorestframework==3.14.0
