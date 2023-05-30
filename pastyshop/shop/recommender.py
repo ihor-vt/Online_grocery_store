@@ -5,9 +5,11 @@ from .models import Product
 
 
 # connect to redis
-r = redis.Redis(host=settings.REDIS_HOST, 
-                port=settings.REDIS_PORT, 
-                db=settings.REDIS_DB)
+r = redis.Redis(
+    host="redis-14569.c250.eu-central-1-1.ec2.cloud.redislabs.com",
+    port=14569,
+    password=f"{settings.REDIS_PASSWORD}",
+)
 
 class Recommender:
     def get_products_ids(self, products):
