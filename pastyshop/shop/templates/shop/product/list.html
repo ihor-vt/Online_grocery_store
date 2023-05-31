@@ -1,0 +1,64 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+{% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+<section>
+    <div id="sidebar">
+        <h3>{% trans "Categories" %}</h3>
+        <ul>
+            <li {% if not category %}class="selected" {% endif %}>
+                <a href="{% url 'shop:product_list' %}">{% trans "All" %}</a>
+            </li>
+            {% for c in categories %}
+            <li {% if category.slug == c.slug %} class="selected" {% endif %}>
+                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <form class="woocommerce-ordering" method="get" id="filter-form">
+        <div class="select-wrap">
+            {{ filter_form.orderby }}
+        </div>
+        <input type="hidden" name="paged" value="1">
+    </form>
+    <div id="main" class="product-list">
+        <div>
+            <h2>{% if category %}{{ category.name }}{% else %}{% trans "Products" %} {% endif %}</h2>
+                <div class="product-count">
+                    <p>Showing {{ products.start_index }}–{{ products.end_index }} of {{ total_products_count }}</p>
+                </div>
+        </div>
+        <div class="line"></div>
+        {% for product in products %}
+        <div class="item">
+            <a href="{{ product.get_absolute_url }}">
+                <img
+                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" style="border-radius: 8px; width: 265px; height: 230px; margin-left: 20px;">
+                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                <br>
+                ${{ product.price }}
+            </div>
+            {% endfor %}
+            <div class="vertical-line"></div>
+    </div>
+</section>
+<br >
+{% endblock %}
+
+{% block sctipts %}
+<script>
+    // Get the form element
+    const form = document.getElementById('filter-form');
+
+    // Add event listener to the select element
+    form.querySelector('.orderby').addEventListener('change', function() {
+        // Submit the form when the select option is changed
+        form.submit();
+    });
+</script>
+{% endblock %}

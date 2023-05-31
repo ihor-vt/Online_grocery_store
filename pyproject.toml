@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "web-site-pivfabrykatu"
+version = "0.1.0"
+description = "Onlyne store"
+authors = ["Ihor Voitiuk"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.1"
+pillow = "^9.5.0"
+celery = "5.2.7"
+django-environ = "^0.10.0"
+flower = "^1.2.0"
+stripe = "4.0.2"
+weasyprint = "56.1"
+redis = "4.3.4"
+django-rosetta = "0.9.8"
+django-parler = "^2.3"
+django-localflavor = "^4.0"
+cloudinary = "^1.33.0"
+django-cloudinary-storage = "^0.3.0"
+psycopg2-binary = "^2.9.6"
+whitenoise = "6.4.0"
+djangorestframework = "^3.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,85 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+{% trans "Contacts" %}
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    <ul class="alert alert-success" role="alert">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="container">
+	<div class="row justify-content-center mt-5">
+		<div class="col-md-6 text-center mb-5">
+			<h2 class="heading-section">{% trans "Contact form for communication" %}</h2>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-md-12">
+			<div class="wrapper">
+				<div class="row no-gutters mb-5">
+					<div class="col-md-7">
+						<div class="contact-wrap w-100 p-md-5 p-4" style="background-color: white;">
+							<h3 class="mb-4">{% trans "Contact us" %}</h3>
+							<div id="form-message-warning" class="mb-4"></div> 
+						<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+								<label class="label" for="name">{% trans "Full Name" %}</label>
+								{{ form.name }}
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+								<label class="label" for="email">{% trans "Email Address" %}</label>
+								{{ form.email }}
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+								<label class="label" for="subject">{% trans "Subject" %}</label>
+								{{ form.subject }}
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+								<label class="label" for="#">{% trans "Message" %}</label>
+								{{ form.message }}
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+								<input type="submit" value="Send Message" class="btn btn-primary">
+								<div class="submitting"></div>
+								</div>
+							</div>
+							</div>
+						</form>
+					</div>
+					</div>
+					<div class="col-md-5 d-flex align-items-stretch">
+						<div id="map">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1114.3219923509625!2d25.726429127321826!3d50.09720574220679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472fea8200338b59%3A0x70a109182cd7d8c3!2z0J3QsNC_0ZbQstGE0LDQsdGA0LjQutCw0YLQuA!5e0!3m2!1suk!2sua!4v1683115400904!5m2!1suk!2sua"
+								width="480" height="760" style="border:0;" allowfullscreen="" loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade">
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+      - redis
+    command: ./wait-for-it.sh db:5432 -t 60 -- python pastyshop/manage.py runserver 0.0.0.0:8000
+    environment:
+      - DATABASE_NAME=pastyshop-db
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=djhnfdrgfe54t54cu7i6vLKML8hj@$%^Ujz
+      - DATABASE_HOST=pastyshop-db-1
+      - DATABASE_PORT=5432
+    networks:
+      - app-network
+    env_file:
+      - .env
+
+  db:
+    image: postgres
+    environment:
+      - DATABASE_NAME=pastyshop-db
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=djhnfdrgfe54t54cu7i6vLKML8hj@$%^Ujz
+      - DATABASE_HOST=pastyshop-db-1
+      - DATABASE_PORT=5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  redis:
+    image: redis
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

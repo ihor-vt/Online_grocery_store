@@ -1,0 +1,61 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Registration" %}{% endblock %}
+
+{% block head%}
+<link href="{% static 'css/css_users/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+<br> </br>
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container pt-5">
+    <div class="mx-auto card login-form" style="width: 450px">
+        <div class="color-change">
+        <div class="card-body">
+            <img class="mb-4 mx-auto d-block logo" src="{% static 'img/logomak_logo.png' %}" alt="Logo" width="90"
+                height="90">
+            <form method="post" class="form-signin">
+                {% csrf_token %}
+                <h3 id="mid" class="mb-3 font-weight-normal">{% trans "Registration" %}</h3>
+                <div class="form-group">
+                    <label for="first_name">{% trans "First name" %}:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="last_name">{% trans "Last name" %}:</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="form-group">
+                    <label for="email">{% trans "Email" %}:</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="pswd">{% trans "Password" %}:</label>
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    <label for="pswd">{% trans "Confirm password" %}:</label>
+                    {{ form.password2 }}
+                </div>
+                <button type="submit" class="btn btn-block btn-success">{% trans "Submit" %}</button>
+            </form>
+            <div class="form-group text-center">
+                <a href="{% url 'users:login' %}" class="ForgetPwd" value="Login">{% trans "Login" %}</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

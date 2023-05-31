@@ -1,0 +1,716 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-27 00:06+0300\n"
+"PO-Revision-Date: 2023-05-17 18:12+0000\n"
+"Last-Translator:   <admin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: authentication/admin.py:18
+msgid "Personal info"
+msgstr ""
+
+#: authentication/admin.py:28
+msgid "Permissions"
+msgstr ""
+
+#: authentication/admin.py:29
+msgid "Adress"
+msgstr ""
+
+#: authentication/admin.py:40
+#: contactsapp/templates/contactsapp/contacts.html:38
+msgid "Full Name"
+msgstr ""
+
+#: authentication/forms.py:25
+#: authentication/templates/authentication/register.html:32
+msgid "First name"
+msgstr ""
+
+#: authentication/forms.py:37
+#: authentication/templates/authentication/register.html:36
+#: authentication/templates/authentication/specific_user.html:22
+msgid "Last name"
+msgstr ""
+
+#: authentication/forms.py:49 authentication/forms.py:90
+#: authentication/templates/authentication/login.html:39
+#: authentication/templates/authentication/password_reset.html:39
+#: authentication/templates/authentication/register.html:40
+msgid "Email"
+msgstr ""
+
+#: authentication/forms.py:61 authentication/forms.py:102
+#: authentication/forms.py:189
+#: authentication/templates/authentication/login.html:44
+#: authentication/templates/authentication/register.html:44
+msgid "Password"
+msgstr ""
+
+#: authentication/forms.py:74
+#: authentication/templates/authentication/register.html:48
+msgid "Confirm password"
+msgstr ""
+
+#: authentication/forms.py:195
+msgid "Password confirmation"
+msgstr ""
+
+#: authentication/forms.py:198
+msgid "Enter the same password as before, for verification."
+msgstr ""
+
+#: authentication/managers.py:18
+msgid "The Email must be set"
+msgstr ""
+
+#: authentication/managers.py:42
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: authentication/managers.py:44
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: authentication/templates/authentication/add_user_information.html:43
+#: authentication/templates/authentication/login.html:48
+#: authentication/templates/authentication/password_reset.html:43
+#: authentication/templates/authentication/password_reset_confirm.html:46
+#: authentication/templates/authentication/register.html:51
+msgid "Submit"
+msgstr ""
+
+#: authentication/templates/authentication/edit_user_information.html:12
+msgid "Editing user information"
+msgstr ""
+
+#: authentication/templates/authentication/edit_user_information.html:113
+msgid "Save changes"
+msgstr ""
+
+#: authentication/templates/authentication/login.html:5
+#: authentication/templates/authentication/login.html:37
+#: authentication/templates/authentication/register.html:54
+#: shop/templates/shop/base.html:50 shop/templates/shop/base.html:146
+msgid "Login"
+msgstr ""
+
+#: authentication/templates/authentication/login.html:51
+msgid "Forget Password"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset.html:5
+#: authentication/templates/authentication/password_reset.html:37
+msgid "Reset password"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_complete.html:8
+msgid "Password reset"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_confirm.html:5
+msgid "Pivfabrucaty"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_confirm.html:36
+msgid "Enter new password"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_done.html:9
+msgid "Password Reset Request Sent"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_done.html:10
+msgid ""
+"We have sent you an email with instructions on how to reset your password"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_email.html:3
+msgid "Hi"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_email.html:4
+msgid ""
+"You have requested a password reset for your account. Click on the following "
+"link to set a new password"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_email.html:7
+msgid "Password Reset Link"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_email.html:10
+msgid "If you didn't request a password reset, please ignore this email"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_email.html:11
+msgid "Thank you"
+msgstr ""
+
+#: authentication/templates/authentication/password_reset_email.html:12
+msgid "Our Team"
+msgstr ""
+
+#: authentication/templates/authentication/register.html:5
+#: authentication/templates/authentication/register.html:30
+msgid "Registration"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:4
+msgid "Information about the user"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:13
+msgid "Personal data"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:17
+#: contactsapp/forms.py:12 shop/forms.py:43 shop/templates/shop/comment.html:20
+msgid "Name"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:27
+msgid "Surname"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:32
+msgid "Cellphone"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:42
+msgid "City"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:47
+msgid "Street"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:52
+msgid "House number"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:57
+msgid "Apartment number"
+msgstr ""
+
+#: authentication/templates/authentication/specific_user.html:64
+msgid "Change"
+msgstr ""
+
+#: authentication/views.py:59
+msgid "The passwords did not match"
+msgstr ""
+
+#: authentication/views.py:63
+msgid "Such an account is already registered"
+msgstr ""
+
+#: authentication/views.py:75
+msgid "You have successfully registered"
+msgstr ""
+
+#: authentication/views.py:95
+msgid "Fill in all fields"
+msgstr ""
+
+#: authentication/views.py:103
+msgid "Enter the correct data"
+msgstr ""
+
+#: cart/forms.py:11
+msgid "Quantity"
+msgstr "Quantity"
+
+#: contactsapp/forms.py:24 contactsapp/templates/contactsapp/contacts.html:50
+msgid "Subject"
+msgstr ""
+
+#: contactsapp/forms.py:29 contactsapp/templates/contactsapp/contacts.html:56
+msgid "Message"
+msgstr ""
+
+#: contactsapp/forms.py:42
+msgid "Enter your email address"
+msgstr ""
+
+#: contactsapp/messages_for_customers.py:4
+msgid "Thank you for contacting the Pivfabrikati Team."
+msgstr ""
+
+#: contactsapp/messages_for_customers.py:5
+#, python-brace-format
+msgid ""
+"\n"
+"    Dear {name},\n"
+"\n"
+"    Thank you for reaching out to Pivfabrikati Store. We have received your "
+"inquiry and would like to express our sincere appreciation.\n"
+"\n"
+"    Your message has been successfully received, and we are grateful for "
+"your interest. Our team has already begun reviewing your message\n"
+"    and will make every effort to provide you with a comprehensive response "
+"as soon as possible. We value your time and will do our utmost \n"
+"    to ensure that you receive quality service and satisfaction with our "
+"semi-finished products.\n"
+"\n"
+"    If you have any additional questions or need further assistance, please "
+"do not hesitate to contact us. We are always ready to provide \n"
+"    you with the support you need.\n"
+"\n"
+"    Once again, thank you very much for contacting us. We appreciate your "
+"trust and value you as our customer.\n"
+"\n"
+"    Best regards,\n"
+"    Pivfabrikati Team\n"
+"    "
+msgstr ""
+
+#: contactsapp/messages_for_customers.py:27
+#, python-brace-format
+msgid "Thank {email} for subscrib Pivfabrikati."
+msgstr ""
+
+#: contactsapp/messages_for_customers.py:28
+msgid ""
+"\n"
+"    Dear subscriber,\n"
+"\n"
+"    Thank you for subscribing to the \"Pivfabrykaty\" store newsletter! We "
+"appreciate your \n"
+"    interest in our store and for choosing to receive our newsletter.\n"
+"\n"
+"    You will be the first to receive updates on new products, special "
+"offers, \n"
+"    discounts, and much more. We strive to provide you with the best service "
+"and \n"
+"    unforgettable experiences with our products.\n"
+"\n"
+"    If you have any questions, feel free to reach out to our customer "
+"support team. \n"
+"    We are always here to assist you.\n"
+"\n"
+"    Thank you once again for your subscription. We are delighted to have you "
+"join our community!\n"
+"\n"
+"    Best regards,\n"
+"    The \"Pivfabrykaty\" Store Team\n"
+"    "
+msgstr ""
+
+#: contactsapp/templates/contactsapp/contacts.html:6
+#: shop/templates/shop/base.html:33
+msgid "Contacts"
+msgstr ""
+
+#: contactsapp/templates/contactsapp/contacts.html:22
+msgid "Contact form for communication"
+msgstr ""
+
+#: contactsapp/templates/contactsapp/contacts.html:31
+msgid "Contact us"
+msgstr ""
+
+#: contactsapp/templates/contactsapp/contacts.html:44
+#: shop/templates/shop/comment.html:24
+msgid "Email Address"
+msgstr ""
+
+#: contactsapp/views.py:30
+msgid "Your message has been received. Thank you!"
+msgstr ""
+
+#: couponsapp/forms.py:6
+msgid "Coupon"
+msgstr "Coupon"
+
+#: couponsapp/urls.py:10
+msgid "apply/"
+msgstr "apply/"
+
+#: mainapp/templates/mainapp/404.html:19
+msgid "The page you are looking for was not found"
+msgstr ""
+
+#: mainapp/templates/mainapp/404.html:20
+msgid "Go back"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:36 shop/templates/shop/base.html:32
+#: shop/templates/shop/product/list.html:30
+msgid "Products"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:47
+msgid "Open production"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:48
+msgid "We have been working for 24 years"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:52
+msgid "Wide range"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:53
+msgid "Various options for breakfast, lunch and dinner"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:57
+msgid "A high quality"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:58
+msgid "Fresh, natural and ecological ingredients"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:67
+msgid "Our menu"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:71
+msgid "Chebureky"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:75
+msgid "Pigeons"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:79
+msgid "Cutlets"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:83
+msgid "Sausages"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:89
+msgid "Pancakes"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:93
+msgid "Dumplings"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:97
+msgid "Pepper stuffed"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:101
+msgid "Cheesecakes"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:107
+msgid "Vareniks"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:111
+msgid "Shows"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:120
+msgid "Popular dishes"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:140
+msgid "Discover the wonderful world of our store"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:142
+msgid ""
+"Welcome to our exciting store, where quality and sophistication are "
+"intertwined in every corner"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:143
+msgid ""
+"We have a wide selection of the best products that will delight your taste "
+"buds. From fresh vegetables and fruits, to unsurpassed homemade pastries and "
+"unique delicacies - all this is available to you in our store"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:144
+msgid ""
+"Our team of experts care about your satisfaction, so we carefully select "
+"each product to ensure you get the best. We strive for a higher standard of "
+"quality, which is why every product undergoes rigorous testing before it "
+"hits our shelves"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:145
+msgid ""
+"Don't miss out on exceptional products at unbeatable prices. We invite you "
+"to visit our store and enjoy an unparalleled shopping experience"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:146
+msgid "Come to us and let us take care of your pleasure and gastronomic needs"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:159 shop/templates/shop/base.html:156
+msgid "Address"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:160 shop/templates/shop/base.html:157
+msgid ""
+"Pivfabrucaty. Ternopil region, Kremenets district, Kremenets city, str. 44 "
+"Shevchenko."
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:165 shop/templates/shop/base.html:159
+msgid "Contact"
+msgstr ""
+
+#: mainapp/templates/mainapp/main.html:166 shop/templates/shop/base.html:160
+msgid "Mobile phone: 067-437-69-08"
+msgstr ""
+
+#: pastyshop/settings.py:175
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: pastyshop/settings.py:176
+msgid "English"
+msgstr "English"
+
+#: pastyshop/urls.py:32
+msgid "cart/"
+msgstr "cart/"
+
+#: pastyshop/urls.py:33
+msgid "orders/"
+msgstr "orders/"
+
+#: pastyshop/urls.py:34
+msgid "payment/"
+msgstr "payment/"
+
+#: pastyshop/urls.py:35
+msgid "coupons/"
+msgstr "coupons/"
+
+#: pastyshop/urls.py:39
+msgid "contacts/"
+msgstr ""
+
+#: paymentapp/urls.py:10
+msgid "process/"
+msgstr "process/"
+
+#: paymentapp/urls.py:11
+msgid "completed/"
+msgstr "completed/"
+
+#: paymentapp/urls.py:12
+msgid "canceled/"
+msgstr "canceled/"
+
+#: shop/forms.py:10
+msgid "Default sorting"
+msgstr ""
+
+#: shop/forms.py:11
+msgid "Sort by latest"
+msgstr ""
+
+#: shop/forms.py:12
+msgid "Sort by price: low to high"
+msgstr ""
+
+#: shop/forms.py:13
+msgid "Sort by price: high to low"
+msgstr ""
+
+#: shop/forms.py:55 shop/templates/shop/comment.html:28
+msgid "Comment"
+msgstr ""
+
+#: shop/templates/shop/base.html:20
+msgid ""
+"Delivery is available from Monday to Saturday. The minimum order amount is "
+"$15, and the delivery feeis $2."
+msgstr ""
+
+#: shop/templates/shop/base.html:31
+msgid "Main"
+msgstr ""
+
+#: shop/templates/shop/base.html:38
+msgid "Logout"
+msgstr ""
+
+#: shop/templates/shop/base.html:49 shop/templates/shop/base.html:147
+msgid "Register"
+msgstr ""
+
+#: shop/templates/shop/base.html:86
+msgid "Your cart"
+msgstr "Your cart"
+
+#: shop/templates/shop/base.html:88
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                        %(items)s item, $%(total)s\n"
+#| "                    "
+#| msgid_plural ""
+#| "\n"
+#| "                        %(items)s items, $%(total)s\n"
+#| "                    "
+msgid ""
+"\n"
+"                    %(items)s item, $%(total)s\n"
+"                    "
+msgid_plural ""
+"\n"
+"                    %(items)s items, $%(total)s\n"
+"                    "
+msgstr[0] ""
+"\n"
+"item"
+msgstr[1] ""
+"\n"
+"items"
+
+#: shop/templates/shop/base.html:95
+msgid "Your cart is empty."
+msgstr "Your cart is empty."
+
+#: shop/templates/shop/base.html:120
+msgid ""
+"We are a family business that grows fresh ve-getables and fruits using "
+"natural fertilizers. Our products do not contain harmful substances and "
+"genetically modified organisms, so they are safe for your health"
+msgstr ""
+
+#: shop/templates/shop/base.html:135
+msgid "Shop"
+msgstr ""
+
+#: shop/templates/shop/base.html:137
+msgid "Semi-finished products"
+msgstr ""
+
+#: shop/templates/shop/base.html:138
+msgid "Vareniki"
+msgstr ""
+
+#: shop/templates/shop/base.html:139
+msgid "Vegetables"
+msgstr ""
+
+#: shop/templates/shop/base.html:140
+msgid "Teas"
+msgstr ""
+
+#: shop/templates/shop/base.html:144
+msgid "Company"
+msgstr ""
+
+#: shop/templates/shop/base.html:151
+msgid "Newsletter"
+msgstr ""
+
+#: shop/templates/shop/base.html:152
+msgid "Do not miss any promotion, subscribe to the newsletter"
+msgstr ""
+
+#: shop/templates/shop/comment.html:15
+msgid "Write a comment"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:23
+#, fuzzy
+#| msgid "Categories"
+msgid "Category"
+msgstr "Categories"
+
+#: shop/templates/shop/product/detail.html:36
+msgid "Add to cart"
+msgstr "Add to cart"
+
+#: shop/templates/shop/product/detail.html:41
+msgid "Description"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:48
+msgid "Comments"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:67
+msgid "No comments, yet."
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:76
+msgid "People who bought this also bought"
+msgstr "People who bought this also bought"
+
+#: shop/templates/shop/product/list.html:10
+msgid "Categories"
+msgstr "Categories"
+
+#: shop/templates/shop/product/list.html:13
+msgid "All"
+msgstr "All"
+
+#: shop/templates/shop/product/search.html:6
+msgid "Search"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:12
+msgid "Products containing"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:15
+msgid "Found"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:15
+msgid "result"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:30
+msgid "There are no results for your query"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:34
+msgid "Search for products"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:39
+msgid "Query"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:56
+msgid "Search again"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:62
+msgid "You may be interested in the following products"
+msgstr ""
+
+#~ msgid "Spanish"
+#~ msgstr "Español"
+
+#~ msgid "Polish"
+#~ msgstr "Polski"
+
+#~ msgid "My shop"
+#~ msgstr "My shop"
+
+#~ msgid "Language"
+#~ msgstr "Language"

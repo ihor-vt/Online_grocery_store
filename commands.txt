@@ -1,0 +1,16 @@
+Command info for run project with docker-compose.yml
+
+Coupon:
+- SUMMER5
+
+Start
+Terminal web:
+python pastyshop/manage.py migrate
+python pastyshop/manage.py createsuperuser
+(You must create super user.)
+python pastyshop/manage.py loaddata pastyshop/mydata.json
+
+New terminal:
+celery -A myshop worker -l info
+
+Stripe (new terminal): - stripe login- stripe listen --forward-to localhost:8000/payment/webhook/

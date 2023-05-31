@@ -1,0 +1,201 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Pivfabrucaty{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}" >
+    <link rel="stylesheet" href="{% static 'css/bootstrap_css/font-awesome-min.css' %}">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/css_footer/style_footer.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block head%}
+    {% endblock %}
+</head>
+
+<body>
+    <div style="background-color:#e13350; min-height:20px; padding:10px; text-align:center; 
+    font-size:14px; line-height:20px; width:100%; color:white;">
+        {% trans "Delivery is available from Monday to Saturday. The minimum order amount is $15, and the delivery feeis $2." %}
+    </div>
+    <header class="page-header">
+        <div id="header">
+            <div class="header-container">
+                <div class="logo">
+                    <a href="/">
+                        <img src="{% static 'img/logomak_logo.png' %}" alt="Logo" style="height: 95px; width: 95px;">
+                    </a>
+                </div>
+                <div class="menu">
+                    <a href="/" class="head-step">{% trans "Main" %}</a>
+                    <a href="{% url 'shop:product_list' %}" class="head-step">{% trans "Products" %}</a>
+                    <a href="{% url 'contacts:contacts' %}" class="head-step">{% trans "Contacts" %}</a>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="right-menu">
+                    <a href="{% url 'users:specific_user' user.id %}" class="head-step">{{ user.first_name }}</a>
+                    <a href="{% url 'users:logout' %}" class="head-step">{% trans "Logout" %}</a>
+                    <a href="{% url 'shop:products_search' %}" class="head-step">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </a>
+                    <br >
+                </div>
+                {% else %}
+                <div class="right-menu">
+                    <a href="{% url 'users:registration' %}" class="head-step">{% trans "Register" %}</a>
+                    <a href="{% url 'users:login' %}" class="head-step">{% trans "Login" %}</a>
+                    <a href="{% url 'shop:products_search' %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </a>
+                    <br> <br>
+                </div>
+                {% endif %}
+                <div id="language-dropdown">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    <span id="language-trigger" class="head-step">
+                        <img src="{% static 'img/platet-language.png' %}" alt="Language"
+                            style="width: 25px; height: 25px;">
+                    </span>
+                    <ul class="language-list">
+                        {% for language in languages %}
+                        <li>
+                            <a href="/{{ language.code }}/" {% if language.code == LANGUAGE_CODE %} class="selected" {% endif %}>
+                            {{ language.name_local|capfirst }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="subheader">
+            <div class="cart">
+                {% with total_items=cart|length %}
+                {% if total_items > 0 %}
+                {% trans "Your cart" %}
+                <a href="{% url 'cart:cart_detail' %}">
+                    {% blocktrans with total=cart.get_total_price count items=total_items %}
+                    {{ items }} item, ${{ total }}
+                    {% plural %}
+                    {{ items }} items, ${{ total }}
+                    {% endblocktrans %}
+                </a>
+                {% elif not order %}
+                {% trans "Your cart is empty." %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </header>
+    <br > <br >
+    <div class="line"></div>
+    <div class="waiver-of-rights">
+        <div id="content" style="min-height: 70vh;">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <br >
+    {% include "shop/pagination/pagination_products.html" with page=products %}
+    <br >
+    <div class="line"></div>
+    <br />
+    <!-- Footer -->
+    <footer class="bg-white">
+        <div class="container py-5">
+            <div class="row py-4">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="{% static 'img/logomak_logo.png' %}" alt="logo"
+                        width="180" class="mb-3">
+                    <p class="font-italic text-muted">{% trans "We are a family business that grows fresh ve-getables and fruits using natural fertilizers. Our products do not contain harmful substances and genetically modified organisms, so they are safe for your health" %}.</p>
+                    <ul class="list-inline mt-4">
+                        <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i
+                                    class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i
+                                    class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i
+                                    class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i
+                                    class="fa fa-pinterest"></i></a></li>
+                        <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i
+                                    class="fa fa-vimeo"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-uppercase font-weight-bold mb-4">{% trans "Shop" %}</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="{% url 'shop:product_list' %}" class="text-muted">{% trans "Semi-finished products" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">{% trans "Vareniki" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">{% trans "Vegetables" %}</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">{% trans "Teas" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="text-uppercase font-weight-bold mb-4">{% trans "Company" %}</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="{% url 'users:login' %}" class="text-muted">{% trans "Login" %}</a></li>
+                        <li class="mb-2"><a href="{% url 'users:registration' %}" class="text-muted">{% trans "Register" %}</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-lg-0">
+                    <h6 class="text-uppercase font-weight-bold mb-4">{% trans "Newsletter" %}</h6>
+                    <p class="text-muted mb-4">{% trans "Do not miss any promotion, subscribe to the newsletter" %}.</p>
+                    {% include 'contactsapp/newsletter_form.html' %}
+                    <br>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a class="text-muted">{% trans "Address" %}: </a>
+                            <p>{% trans "Pivfabrucaty. Ternopil region, Kremenets district, Kremenets city, str. 44 Shevchenko." %}</p>
+                        </li>
+                        <li class="mb-2"><a class="text-muted">{% trans "Contact" %}: </a>
+                            <p>{% trans "Mobile phone: 067-437-69-08" %}</p>
+                            <p>Email: pivfabrucaty@gmail.com</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyrights -->
+        <div class="bg-light py-4">
+            <div class="container text-center">
+                <p class="text-muted mb-0 py-2">© 2023 Ihor Voitiuk</p>
+            </div>
+        </div>
+    </footer>
+    <!-- End -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var languageDropdown = document.getElementById('language-dropdown');
+            var languageList = document.querySelector('.language-list');
+
+            languageList.style.display = 'none';
+
+            languageDropdown.addEventListener('mouseover', function () {
+                languageList.style.display = 'block';
+            });
+
+            languageDropdown.addEventListener('mouseout', function () {
+                languageList.style.display = 'none';
+            });
+
+            languageDropdown.addEventListener('click', function () {
+                languageList.style.display = (languageList.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+    </script>
+    {% block sctipts %}
+    {% endblock %}
+</body>
+
+</html>

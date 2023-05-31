@@ -1,0 +1,72 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+
+{% block title %} {% trans "Information about the user" %} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0"> {% trans "Personal data" %}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="id_first_name"> {% trans "Name" %}:</label>
+                        <p>{{ user.first_name }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_last_name"> {% trans "Last name" %}:</label>
+                        <p>{{ user.last_name }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_middle_name"> {% trans "Surname" %}:</label>
+                        <p>{{ user.middle_name }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_phone_number"> {% trans "Cellphone" %}:</label>
+                        <p>{{ user.phone_number }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_email">Email:</label>
+                        <p>{{ user.email }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_city"> {% trans "City" %}:</label>
+                        <p>{{ user.city }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_street"> {% trans "Street" %}:</label>
+                        <p>{{ user.street }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_house_number"> {% trans "House number" %}:</label>
+                        <p>{{ user.house_number }}</p>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="id_apartment_number"> {% trans "Apartment number" %}:</label>
+                        <p>{{ user.apartment_number }}</p>
+                    </div>
+                    <br />
+                    <div>
+                        <form action="{% url 'users:edit_user_information' user_id=user.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary"> {% trans "Change" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
