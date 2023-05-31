@@ -216,30 +216,35 @@ ul.errorlist {
 }
 
 #main {
-    float: left;
     width: 90%;
     margin-right: -220px;
     overflow: hidden;
     padding-right: 40px; /* Додаємо відстань з правої сторони */
 }
 
-.product-list .item {
-    width: calc(33.33% - 30px);
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.item {
     padding: 10px;
     box-sizing: border-box;
-    float: left;
     text-align: center;
     line-height: 1.2;
-    margin-left: 10px;
-    margin-right: 10px;
+}
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
-.product-list .item:first-child {
-    margin-left: 0;
-}
-
-.product-list .item:last-child {
-    margin-right: 0;
+.product-list .item {
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .product-list .item img {
@@ -256,7 +261,6 @@ ul.errorlist {
     width: 15px;
     height: 1px;
 }
-
 
 .product-detail {
     text-align: justify;
