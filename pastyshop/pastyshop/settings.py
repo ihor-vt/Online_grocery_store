@@ -21,26 +21,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env")
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-        },
-    },
-    "root": {
-        "handlers": ["console"],
-        "level": "WARNING",
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
-            "propagate": False,
-        },
-    },
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "handlers": {
+#         "console": {
+#             "class": "logging.StreamHandler",
+#         },
+#     },
+#     "root": {
+#         "handlers": ["console"],
+#         "level": "WARNING",
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["console"],
+#             "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+#             "propagate": False,
+#         },
+#     },
+# }
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -49,7 +49,7 @@ LOGGING = {
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False     
+DEBUG = True     
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -138,7 +138,7 @@ DATABASES = {
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': env('DATABASE_NAME'),
 #         'USER': env('DATABASE_USER'),
 #         'PASSWORD': env('DATABASE_PASSWORD'),

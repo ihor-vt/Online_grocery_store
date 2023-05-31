@@ -5,8 +5,7 @@
 {{ product.name }}
 {% endblock %}
 {% block content %}
-<br>
-<br>
+<br >
 <div class="product-detail">
     <div class="image">
         <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
@@ -18,7 +17,7 @@
             <div style="font-size: 18px;">
                 {{ product.mini_description|linebreaks }}
             </div>
-            <hr> 
+            <hr>
             {% endif %}
             <p>{% trans 'Category' %}: <a href="{{ product.category.get_absolute_url }}">
                     {{ product.category }}</a>
@@ -42,11 +41,11 @@
     <div style="text-align: justify;">
         {{ product.description }}
     </div>
-    <br >
+    <br>
     <div class="line"></div>
     <div>
         <p style="display: inline-block; font-size: 28px;">{% trans "Comments" %}</p>
-    
+
         <div class="product-count" style="display: inline-block;">
             <p style="font-size: 17px; margin-left: 10px;">
                 Showing {{ comments.start_index }}–{{ comments.end_index }} of {{ total_comments_count }}
@@ -56,10 +55,10 @@
 
     {% if comments %}
     <div style="text-align: justify;">
-        {% for comment in comments %} 
+        {% for comment in comments %}
         {{ comment.name}} - {{ comment.created }}
         {{ comment.body|linebreaks }}
-        <hr> 
+        <hr>
         {% endfor %}
     </div>
     {% else %}
@@ -69,7 +68,7 @@
     {% endif %}
     {% include "shop/pagination/pagination_comments.html" with page=comments %}
     {% include 'shop/comment.html' %}
-    <br >
+    <br>
     <div class="line"></div>
     {% if recommended_products %}
     <div class="recommendations">
