@@ -10,6 +10,8 @@ The "Online Food Store" is an online grocery store where users can order food pr
 - Language selection option (English or Ukrainian) for user convenience.
 - Sorting of products based on various parameters.
 - Payment processing through the Stripe payment system.
+- The following database was used [Neon](https://console.neon.tech/): postgresql
+- For caching [Redis](https://app.redislabs.com/)
 
 ## Technologies Used
 
