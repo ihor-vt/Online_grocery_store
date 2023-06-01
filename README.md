@@ -27,6 +27,7 @@ The "Online Food Store" project utilizes the following technologies and librarie
 1. [Koyeb](https://pivfabrucaty-goit.koyeb.app/en/): https://pivfabrucaty-goit.koyeb.app
 
 2. Or you can run in the docker container with the following command:
+- docker-compose up
 - python pastyshop/manage.py migrate
 - python pastyshop/manage.py createsuperuser
 (You must create super user.)
