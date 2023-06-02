@@ -24,9 +24,9 @@
             </p>
         </h2>
         {% if product.category == 'Teas' or product.category == 'Meat' %}
-        <p class="price">${{ product.price }}/kg</p>
+        <p class="price">UAH {{ product.price }}/kg</p>
         {% else %}
-        <p class="price">${{ product.price }}</p>
+        <p class="price">UAH {{ product.price }}</p>
         {% endif %}
 
         <form action="{% url 'cart:cart_add' product.id %}" method="post">

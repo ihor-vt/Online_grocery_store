@@ -18,7 +18,7 @@
 <body>
     <div style="background-color:#e13350; min-height:20px; padding:10px; text-align:center; 
     font-size:14px; line-height:20px; width:100%; color:white;">
-        {% trans "Delivery is available from Monday to Saturday. The minimum order amount is $15, and the delivery feeis $2." %}
+        {% trans "Delivery is available from Monday to Saturday. The minimum order amount is UAH 15, and the delivery feeis UAH 2." %}
     </div>
     <header class="page-header">
         <div id="header">
@@ -87,9 +87,9 @@
                 {% trans "Your cart" %}
                 <a href="{% url 'cart:cart_detail' %}">
                     {% blocktrans with total=cart.get_total_price count items=total_items %}
-                    {{ items }} item, ${{ total }}
+                    {{ items }} item, UAH {{ total }}
                     {% plural %}
-                    {{ items }} items, ${{ total }}
+                    {{ items }} items, UAH {{ total }}
                     {% endblocktrans %}
                 </a>
                 {% elif not order %}
