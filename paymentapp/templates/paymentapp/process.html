@@ -23,9 +23,9 @@
             {% else %}{% static 'img/no_image.png' %}{% endif %}">
           </td>
           <td>{{ item.product.name }}</td>
-          <td class="num">${{ item.price }}</td>
+          <td class="num">UAH {{ item.price }}</td>
           <td class="num">{{ item.quantity }}</td>
-          <td class="num">${{ item.get_cost }}</td>
+          <td class="num">UAH {{ item.get_cost }}</td>
         </tr>
       {% endfor %}
       {% if order.coupon %}
@@ -33,7 +33,7 @@
           <td>Subtotal</td>
           <td colspan="3"></td>
           <td class="num">
-            ${{ order.get_total_cost_before_discount|floatformat:2 }}
+            UAH {{ order.get_total_cost_before_discount|floatformat:2 }}
           </td>
         </tr>
         <tr>
@@ -43,7 +43,7 @@
           </td>
           <td colspan="3"></td>
           <td class="num neg">
-            - ${{ order.get_discount|floatformat:2 }}
+            - UAH {{ order.get_discount|floatformat:2 }}
           </td>
         </tr>
       {% endif %}
@@ -51,7 +51,7 @@
         <td>Total</td>
         <td colspan="3"></td>
         <td class="num">
-          ${{ order.get_total_cost|floatformat:2 }}
+          UAH {{ order.get_total_cost|floatformat:2 }}
         </td>
       </tr>
     </tbody>
