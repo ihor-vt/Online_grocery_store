@@ -5,27 +5,46 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0002_producttranslation_mini_description'),
+        ("shop", "0002_producttranslation_mini_description"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=80)),
-                ('email', models.EmailField(max_length=254)),
-                ('body', models.TextField()),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('active', models.BooleanField(default=True)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='shop.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=80)),
+                ("email", models.EmailField(max_length=254)),
+                ("body", models.TextField()),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                ("active", models.BooleanField(default=True)),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="comments",
+                        to="shop.product",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['created'],
-                'indexes': [models.Index(fields=['created'], name='shop_commen_created_d90939_idx')],
+                "ordering": ["created"],
+                "indexes": [
+                    models.Index(
+                        fields=["created"],
+                        name="shop_commen_created_d90939_idx",
+                    )
+                ],
             },
         ),
     ]

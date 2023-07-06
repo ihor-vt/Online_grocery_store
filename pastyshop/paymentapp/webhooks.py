@@ -12,31 +12,30 @@ def stripe_webhook(request):
     """
     The stripe_webhook function is a view that receives webhooks from Stripe.
     It's called by the Stripe API when an event happens in your account, such as
-    a customer completing a payment. The function checks that the request is valid 
+    a customer completing a payment. The function checks that the request is valid
     and then extracts the relevant data from it.
-    
+
     :param request: Get the request object that is sent to the view
     :return: An httpresponse object with a status code of 200
     """
     payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
     event = None
 
     try:
         event = stripe.Webhook.construct_event(
-                    payload,
-                    sig_header,
-                    settings.STRIPE_WEBHOOK_SECRET)
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
     except ValueError as e:
         # Invalid payload
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
         return HttpResponse(status=400)
-    
-    if event.type == 'checkout.session.completed':
+
+    if event.type == "checkout.session.completed":
         session = event.data.object
-        if session.mode == 'payment' and session.payment_status == 'paid':
+        if session.mode == "payment" and session.payment_status == "paid":
             try:
                 order = Order.objects.get(id=session.client_reference_id)
             except Order.DoesNotExist:
@@ -48,5 +47,5 @@ def stripe_webhook(request):
             order.save()
             # launch asynchronous task
             payment_completed.delay(order.id)
-    
+
     return HttpResponse(status=200)

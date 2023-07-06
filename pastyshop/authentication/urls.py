@@ -14,12 +14,20 @@ urlpatterns = [
     path("register/", views.registration, name="registration"),
     path("logout/", views.logoutuser, name="logout"),
     path("inform/", views.add_user_information, name="add_user_information"),
-    path("check-user/", views.check_full_user_data, name="check_full_user_data"),
     path(
-        "edit/<int:user_id>", views.edit_user_information, name="edit_user_information"
+        "check-user/", views.check_full_user_data, name="check_full_user_data"
+    ),
+    path(
+        "edit/<int:user_id>",
+        views.edit_user_information,
+        name="edit_user_information",
     ),
     path("user/<int:user_id>", views.specific_user, name="specific_user"),
-    path("reset-password/", views.ResetPasswordView.as_view(), name="password_reset"),
+    path(
+        "reset-password/",
+        views.ResetPasswordView.as_view(),
+        name="password_reset",
+    ),
     path(
         "reset-password/done/",
         PasswordResetDoneView.as_view(

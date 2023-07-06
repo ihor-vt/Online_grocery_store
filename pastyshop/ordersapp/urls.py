@@ -14,7 +14,9 @@ urlpatterns = [
         name="admin_order_detail",
     ),
     path(
-        "admin/order/<int:order_id>/pdf/", views.admin_order_pdf, name="admin_order_pdf"
+        "admin/order/<int:order_id>/pdf/",
+        views.admin_order_pdf,
+        name="admin_order_pdf",
     ),
     path("api/", include("ordersapp.api.urls", namespace="api")),
 ]

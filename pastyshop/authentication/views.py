@@ -23,9 +23,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     email_template_name = "authentication/password_reset_email.html"
     html_email_template_name = "authentication/password_reset_email.html"
     success_url = reverse_lazy("users:password_reset_done")
-    success_message = (
-        "An email with instructions to reset your password has been sent to %(email)s."
-    )
+    success_message = "An email with instructions to reset your password has been sent to %(email)s."
     subject_template_name = "authentication/password_reset_subject.txt"
 
 
@@ -43,7 +41,7 @@ def registration(request):
     if request.method == "GET":
         form = RegistrationForm()
         return render(request, "authentication/register.html", {"form": form})
-    
+
     elif request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -54,15 +52,18 @@ def registration(request):
             password = cd["password1"]
             password2 = cd["password2"]
 
-            
             if password != password2:
                 messages.warning(request, _("The passwords did not match"))
-                return render(request, "authentication/register.html", {"form": form})
-            
+                return render(
+                    request, "authentication/register.html", {"form": form}
+                )
+
             if CustomUser.objects.filter(email=email).exists():
-                messages.warning(request, _("Such an account is already registered"))
+                messages.warning(
+                    request, _("Such an account is already registered")
+                )
                 return redirect("users:registration")
-            
+
             hashed_password = make_password(password)
 
             user = CustomUser.create_user(
@@ -71,13 +72,15 @@ def registration(request):
                 first_name=first_name,
                 last_name=last_name,
             )
-            
+
             messages.success(request, _("You have successfully registered"))
             return redirect("users:login")
-        
+
         else:
-            return render(request, "authentication/register.html", {"form": form})
-    
+            return render(
+                request, "authentication/register.html", {"form": form}
+            )
+
     return render(request, "authentication/register.html", {"form": form})
 
 
@@ -93,7 +96,9 @@ def login(request):
 
             if not email or not password:
                 messages.warning(request, _("Fill in all fields"))
-                return render(request, "authentication/login.html", {"form": form})
+                return render(
+                    request, "authentication/login.html", {"form": form}
+                )
 
             user = authenticate(request, email=email, password=password)
             if user is not None:
@@ -101,7 +106,9 @@ def login(request):
                 return redirect("shop:product_list")
             else:
                 messages.warning(request, _("Enter the correct data"))
-                return render(request, "authentication/login.html", {"form": form})
+                return render(
+                    request, "authentication/login.html", {"form": form}
+                )
         else:
             return render(request, "authentication/login.html", {"form": form})
 
@@ -121,7 +128,9 @@ def specific_user(request, user_id):
     if request.method == "GET":
         user = CustomUser.get_by_id(user_id)
         contex = {"user": user}
-        return render(request, "authentication/specific_user.html", context=contex)
+        return render(
+            request, "authentication/specific_user.html", context=contex
+        )
     elif request.method == "POST":
         return redirect("users:edit_user_information")
 
@@ -154,7 +163,9 @@ def edit_user_information(request, user_id):
             user.apartment_number = form.cleaned_data["apartment_number"]
             user.save()
             contex = {"user": user}
-            return render(request, "authentication/specific_user.html", context=contex)
+            return render(
+                request, "authentication/specific_user.html", context=contex
+            )
     else:
         # Заповнення форми даними поточного користувача
         initial_data = {
@@ -172,7 +183,9 @@ def edit_user_information(request, user_id):
         form = EditUserInformationForm(initial=initial_data)
 
     context = {"form": form, "user": user}
-    return render(request, "authentication/edit_user_information.html", context)
+    return render(
+        request, "authentication/edit_user_information.html", context
+    )
 
 
 @login_required
@@ -220,10 +233,14 @@ def add_user_information(request):
             password1 = cd["password1"]
             password2 = cd["password2"]
             if password1 != password2:
-                messages.add_message(request, messages.WARNING, "Паролі не зівпали")
+                messages.add_message(
+                    request, messages.WARNING, "Паролі не зівпали"
+                )
             if messages.get_messages(request):
                 return render(
-                    request, "authentication/add_user_information.html", {"form": form}
+                    request,
+                    "authentication/add_user_information.html",
+                    {"form": form},
                 )
             else:
                 CustomUser.create_user(
@@ -245,12 +262,16 @@ def add_user_information(request):
                 )
                 user = CustomUser.objects.filter(email=email).first()
                 if user:
-                    session = authenticate(request, email=email, password=password1)
+                    session = authenticate(
+                        request, email=email, password=password1
+                    )
                     login_user(request, user)
                 return redirect("shop:process")
         else:
             return render(
-                request, "authentication/add_user_information.html", {"form": form}
+                request,
+                "authentication/add_user_information.html",
+                {"form": form},
             )
     else:
         return render(
@@ -269,6 +290,8 @@ def check_full_user_data(request):
     user = request.user
     if user.is_authenticated and user.check_all_user_data(user.email):
         contex = {"user": user}
-        return render(request, "authentication/specific_user.html", context=contex)
+        return render(
+            request, "authentication/specific_user.html", context=contex
+        )
     else:
         return redirect("users:add_user_information")

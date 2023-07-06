@@ -51,7 +51,9 @@ def order_create(request):
             return redirect(reverse("payment:process"))
     else:
         form = OrderCreateForm()
-    return render(request, "ordersapp/order/create.html", {"cart": cart, "form": form})
+    return render(
+        request, "ordersapp/order/create.html", {"cart": cart, "form": form}
+    )
 
 
 @staff_member_required
@@ -65,7 +67,9 @@ def admin_order_detail(request, order_id):
     :return: An html template
     """
     order = get_object_or_404(Order, id=order_id)
-    return render(request, "admin/ordersapp/order/detail.html", {"order": order})
+    return render(
+        request, "admin/ordersapp/order/detail.html", {"order": order}
+    )
 
 
 @staff_member_required
@@ -85,6 +89,7 @@ def admin_order_pdf(request, order_id):
     response = HttpResponse(content_type="application/pdf")
     response["Content-Disposition"] = f"filename=order_{order.id}.pdf"
     weasyprint.HTML(string=html).write_pdf(
-        response, stylesheets=[weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
+        response,
+        stylesheets=[weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")],
     )
     return response

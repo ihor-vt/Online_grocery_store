@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from .models import CustomUser
@@ -25,8 +24,14 @@ class CustomUserAdmin(admin.ModelAdmin):
                 )
             },
         ),
-        (_("Permissions"), {"fields": ("is_active", "is_staff", "is_superuser")}),
-        (_("Adress"), {"fields": ("city", "street", "house_number", "apartment_number")}),
+        (
+            _("Permissions"),
+            {"fields": ("is_active", "is_staff", "is_superuser")},
+        ),
+        (
+            _("Adress"),
+            {"fields": ("city", "street", "house_number", "apartment_number")},
+        ),
     )
     add_fieldsets = (
         (
@@ -37,13 +42,13 @@ class CustomUserAdmin(admin.ModelAdmin):
 
     def get_full_name(self, obj):
         return f"{obj.first_name} {obj.middle_name} {obj.last_name}"
+
     get_full_name.short_description = _("Full Name")
 
     list_display = ("email", "get_full_name", "is_staff")
     list_filter = ("is_staff", "is_superuser", "is_active", "email")
     search_fields = ("email", "first_name", "middle_name", "last_name")
     ordering = ("email",)
-
 
 
 admin.site.register(CustomUser, CustomUserAdmin)

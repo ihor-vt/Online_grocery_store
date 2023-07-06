@@ -27,7 +27,9 @@ def contacts(request):
             subject, messages = thank_message(name)
             # launch asynchronous task
             contacts_us.delay(email, subject, messages)
-            ms.success(request, _("Your message has been received. Thank you!"))
+            ms.success(
+                request, _("Your message has been received. Thank you!")
+            )
             return redirect("contacts:contacts")
     else:
         form = ContactForm()

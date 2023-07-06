@@ -1,8 +1,10 @@
 from django.utils.translation import gettext_lazy as _
 
+
 def thank_message(name):
-    subject = _(f'Thank you for contacting the Pivfabrikati Team.')
-    messages = _(f"""
+    subject = _(f"Thank you for contacting the Pivfabrikati Team.")
+    messages = _(
+        f"""
     Dear {name},
 
     Thank you for reaching out to Pivfabrikati Store. We have received your inquiry and would like to express our sincere appreciation.
@@ -18,14 +20,16 @@ def thank_message(name):
 
     Best regards,
     Pivfabrikati Team
-    """)
+    """
+    )
 
     return (subject, messages)
 
 
 def subscribe_message(email):
-    subject = _(f'Thank {email} for subscrib Pivfabrikati.')
-    message = _("""
+    subject = _(f"Thank {email} for subscrib Pivfabrikati.")
+    message = _(
+        """
     Dear subscriber,
 
     Thank you for subscribing to the "Pivfabrykaty" store newsletter! We appreciate your 
@@ -42,6 +46,7 @@ def subscribe_message(email):
 
     Best regards,
     The "Pivfabrykaty" Store Team
-    """)
+    """
+    )
 
     return (subject, message)

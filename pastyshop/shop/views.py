@@ -1,13 +1,16 @@
 import random
 
-from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.contrib.postgres.search import (
+    SearchVector,
+    SearchQuery,
+    SearchRank,
+)
 
-from .models import Category, Product, Comment
-from .recommender import Recommender
 from cart.forms import CartAddProductForm
+from .models import Category, Product
+from .recommender import Recommender
 from .forms import ProductFilterForm, SearchForm, CommentForm
 
 
@@ -30,7 +33,9 @@ def product_list(request, category_slug=None):
 
     category = None
     categories = Category.objects.all()
-    all_products = Product.objects.filter(available=True).order_by('?').distinct()
+    all_products = (
+        Product.objects.filter(available=True).order_by("?").distinct()
+    )
 
     # Apply sorting based on the selected option
     if orderby:
@@ -75,9 +80,12 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, id, slug):
     """
-    The product_detail function is responsible for displaying a single product.
-    It takes the id and slug of the product as arguments, fetches it from the database,
-    and passes it to a template along with an add-to-cart form. It also uses Recommender to fetch recommended products.
+    The product_detail function is responsible for displaying a
+    single product.
+    It takes the id and slug of the product as arguments, fetches
+    it from the database,
+    and passes it to a template along with an add-to-cart form.
+    It also uses Recommender to fetch recommended products.
 
     :param request: Get the current request
     :param id: Get the product from the database
@@ -99,7 +107,9 @@ def product_detail(request, id, slug):
     recommended_products = r.suggest_products_for([product], 4)
     if recommended_products.count == 0:
         all_products = Product.objects.filter(available=True)
-        recommended_products = random.sample(list(all_products), min(len(all_products), 5))
+        recommended_products = random.sample(
+            list(all_products), min(len(all_products), 5)
+        )
 
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
@@ -142,13 +152,16 @@ def product_detail(request, id, slug):
 
 def products_search(request):
     """
-    The products_search function is a view that allows users to search for products.
-    It uses the SearchForm form, which contains a single field named query. The user's input
-    is stored in the query variable and then used to filter Product objects using Django's
-    SearchVector and SearchQuery classes.
+    The products_search function is a view that allows users
+    to search for products.
+    It uses the SearchForm form, which contains a single field named query.
+    The user's input
+    is stored in the query variable and then used to filter Product objects
+    using Django's SearchVector and SearchQuery classes.
 
     :param request: Get the request object
-    :return: A rendered template, but it also contains a form and query variables
+    :return: A rendered template, but it also contains a
+    form and query variables
     """
     form = SearchForm()
     query = None
@@ -168,7 +181,8 @@ def products_search(request):
 
             results = (
                 products.annotate(
-                    search=search_vector, rank=SearchRank(search_vector, search_query)
+                    search=search_vector,
+                    rank=SearchRank(search_vector, search_query),
                 )
                 .filter(search=search_query)
                 .order_by("-updated")
@@ -176,11 +190,13 @@ def products_search(request):
     try:
         r = Recommender()
         recommended_products = r.suggest_products_for([products], 4)
-    except:
+    except ValueError:
         recommended_products = []
     if len(recommended_products) == 0:
         all_products = Product.objects.filter(available=True)
-        recommended_products = random.sample(list(all_products), min(len(all_products), 4))
+        recommended_products = random.sample(
+            list(all_products), min(len(all_products), 4)
+        )
 
     return render(
         request,

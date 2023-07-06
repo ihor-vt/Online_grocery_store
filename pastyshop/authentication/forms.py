@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import password_validation
 from django.core.validators import EmailValidator, RegexValidator
-from django.utils.translation import gettext, gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 phone_ua_validator = RegexValidator(
@@ -16,7 +16,8 @@ name_validator = RegexValidator(
 
 password_validator = RegexValidator(
     r"[A-Za-z0-9@#$%^&+=]{8,}",
-    message="Пароль повинен містити мінімум 8 символів,\n1 велика літера, 1 маленька,1 цифра,один спец.символ",
+    message="Пароль повинен містити мінімум 8 символів,\n1 велика літера, \
+        1 маленька,1 цифра,один спец.символ",
 )
 
 
@@ -177,7 +178,8 @@ class AddUserInformationForm(forms.Form):
         label="Email",
         validators=[EmailValidator(message="Введіть коректний Email")],
         widget=forms.EmailInput(attrs={"class": "form-control"}),
-        help_text="Введіть Email, який буде використовуватися для входу на сайт.",
+        help_text="Введіть Email, який буде використовуватися для входу\
+                на сайт.",
     )
     phone_number = forms.CharField(
         label="Мобільний телефон",

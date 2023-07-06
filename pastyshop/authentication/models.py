@@ -19,7 +19,8 @@ class CustomUser(AbstractBaseUser):
     type email: str, unique, max length=100
     param password: Describes the password of the user
     type password: str
-    param created_at: Describes the date when the user was created. Can't be changed.
+    param created_at: Describes the date when the user was created.
+    Can't be changed.
     type created_at: int (timestamp)
     param updated_at: Describes the date when the user was modified
     type updated_at: int (timestamp)
@@ -29,7 +30,9 @@ class CustomUser(AbstractBaseUser):
     first_name = models.CharField(max_length=20, default=None)
     last_name = models.CharField(max_length=20, default=None)
     middle_name = models.CharField(blank=True, max_length=20, null=True)
-    phone_number = models.CharField(max_length=20, default=None, blank=True, null=True)
+    phone_number = models.CharField(
+        max_length=20, default=None, blank=True, null=True
+    )
     email = models.EmailField(unique=True, max_length=100, default=None)
     password = models.CharField(max_length=255, default=None)
     city = models.CharField(max_length=50, blank=True, null=True)
@@ -47,21 +50,29 @@ class CustomUser(AbstractBaseUser):
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
 
-    def __str__(self) -> str:
-        """
-        Magic method is redefined to show all information about CustomUser.
-        :return: user id, user first_name, user middle_name, user last_name,
-                user email, user password, user updated_at, user created_at,
-                user is_active
-        """
-        return f"'first_name': '{self.first_name}',\
-                'middle_name': '{self.middle_name}', 'last_name': '{self.last_name}',\
-                'email': '{self.email}', 'created_at': {int(self.created_at.timestamp())},\
-                'updated_at': {int(self.updated_at.timestamp())}, 'is_active': {self.is_active}"
+    # def __str__(self) -> str:
+    #     """
+    #     Magic method is redefined to show all information about CustomUser.
+    #     :return: user id, user first_name, user middle_name, user last_name,
+    #             user email, user password, user updated_at, user created_at,
+    #             user is_active
+    #     """
+    #     return (
+    #         f"'first_name': '{self.first_name}', "
+    #         f"'middle_name': '{self.middle_name}', "
+    #         f"'last_name': '{self.last_name}', "
+    #         f"'email': '{self.email}', "
+    #         f"'created_at': {int(self.created_at.timestamp())\
+    #                             if self.created_at else None}, "
+    #         f"'updated_at': {int(self.updated_at.timestamp())\
+    #                             if self.updated_at else None}, "
+    #         f"'is_active': {self.is_active}"
+    #     )
 
     def __repr__(self):
         """
-        This magic method is redefined to show class and id of CustomUser object.
+        This magic method is redefined to show class and
+        id of CustomUser object.
         :return: class, id
         """
         return f"{CustomUser.__name__}(id={self.id})"
@@ -91,7 +102,8 @@ class CustomUser(AbstractBaseUser):
         """
         :param user_id: an id of a user to be deleted
         :type user_id: int
-        :return: True if object existed in the db and was removed or False if it didn't exist
+        :return: True if object existed in the db and was removed
+        or False if it didn't exist
         """
         user_to_delete = CustomUser.objects.filter(id=user_id).first()
         if user_to_delete:
@@ -100,7 +112,9 @@ class CustomUser(AbstractBaseUser):
         return False
 
     @staticmethod
-    def create(email, password, first_name=None, middle_name=None, last_name=None):
+    def create(
+        email, password, first_name=None, middle_name=None, last_name=None
+    ):
         """
         Creates a new user
         :param email: email of the user
@@ -113,9 +127,14 @@ class CustomUser(AbstractBaseUser):
         :type middle_name: str
         :param last_name: last name of the user
         :type last_name: str
-        :return: a new user object which is also written into the DB or None if user with this email is registered before
+        :return: a new user object which is also written
+        into the DB or None if user with this email
+        is registered before.
         """
-        if email.split("@") == 2 and len(CustomUser.objects.filter(email=email)) == 0:
+        if (
+            email.split("@") == 2
+            and len(CustomUser.objects.filter(email=email)) == 0
+        ):
             custom_user = CustomUser(
                 email=email,
                 password=password,
@@ -135,11 +154,21 @@ class CustomUser(AbstractBaseUser):
         password,
     ):
         """
-        The create_user function creates a new user with the given email and password.
+        The create_user function creates a new user with the given
+        email and password.
             Args:
                 first_name (str): The first name of the user.
                 last_name (str): The last name of the user.
-                email (str): The email address for this user's account. This will be used as their username when logging in to their account, so it must be unique across all users in our system! If an existing User already exists with this same email address, we'll return that User instead of creating a new one; otherwise we'll create a brand-new User object and save it to our database
+                email (str): The email address for this user's account
+                This will be used as their username when logging in
+                to their account,
+                so it must be unique across all users in our system!
+                If an existing
+                User already exists with this same email address,
+                we'll return that
+                User instead of creating a new one; otherwise we'll
+                create a brand-new
+                User object and save it to our database
 
         :param first_name: Set the first name of a user
         :param last_name: Create a last name for the user
@@ -164,8 +193,10 @@ class CustomUser(AbstractBaseUser):
 
     def to_dict(self):
         """
-        The to_dict function is used to convert the User model into a dictionary.
-        This function is called in the serializer, and it's purpose is to make sure
+        The to_dict function is used to convert the User model
+        into a dictionary.
+        This function is called in the serializer, and it's
+        purpose is to make sure
         that all of our data gets converted into JSON format.
 
 
@@ -184,7 +215,7 @@ class CustomUser(AbstractBaseUser):
             "street": f"{self.street}",
             "house_number": f"{self.house_number}",
             "apartment_number": f"{self.apartment_number}",
-            "created_at": int(self.created_at.timestamp()),
+            "created_at": int(self.created_at.timestamp()), 
             "updated_at": int(self.updated_at.timestamp()),
             "is_active": self.is_active,
         }
@@ -204,7 +235,8 @@ class CustomUser(AbstractBaseUser):
     @staticmethod
     def check_all_user_data(email):
         """
-        The check_all_user_data function checks if all the user data is filled in.
+        The check_all_user_data function checks if all the user
+        data is filled in.
 
 
         :param email: Get the user object from the database
@@ -236,9 +268,12 @@ class CustomUser(AbstractBaseUser):
         is_active=None,
     ):
         """
-        The update function takes in a user object and updates the fields of that user
-        object with the values passed into it. If no value is passed for a field, then
-        the field will not be updated. The function returns True if an update was made or False otherwise.
+        The update function takes in a user object and updates
+        the fields of that user
+        object with the values passed into it. If no value is
+        passed for a field, then
+        the field will not be updated. The function returns
+        True if an update was made or False otherwise.
 
         :param self: Represent the instance of the object itself
         :param first_name: Update the first name of a user
@@ -248,27 +283,30 @@ class CustomUser(AbstractBaseUser):
         :param password: Update the password of a user
         :param is_active: Determine if the user is active or not
         :param : Update the user's first name
-        :return: True if the object existed in the db and was updated or false if it didn't exist
+        :return: True if the object existed in the db and
+        was updated or false if it didn't exist
         """
         user_to_update = CustomUser.objects.filter(email=self.email).first()
-        if first_name != None and len(first_name) <= 20:
+        if first_name is not None and len(first_name) <= 20:
             user_to_update.first_name = first_name
-        if middle_name != None and len(middle_name) <= 20:
+        if middle_name is not None and len(middle_name) <= 20:
             user_to_update.middle_name = middle_name
-        if last_name != None and len(last_name) <= 20:
+        if last_name is not None and len(last_name) <= 20:
             user_to_update.last_name = last_name
         if len(email.split("@")) == 2:
             user_to_update.email = email
-        if password != None:
+        if password is not None:
             user_to_update.password = password
-        if is_active != None:
+        if is_active is not None:
             user_to_update.is_active = is_active
         user_to_update.save()
 
     def get_address(self):
         """
-        The get_address function returns a string containing the user's address.
-            The function will return the house number if it exists, or else it will
+        The get_address function returns a string containing
+        the user's address.
+            The function will return the house number if it exists,
+            or else it will
             return the apartment number.
 
         :param self: Refer to the current instance of a class
@@ -291,14 +329,16 @@ class CustomUser(AbstractBaseUser):
 
         :param self: Refer to the user object
         :param perm: Check if the user has a specific permission
-        :param obj: Check if the user has permission to perform an action on a specific object
+        :param obj: Check if the user has permission
+        to perform an action on a specific object
         :return: A boolean value
         """
         return self.is_superuser
 
     def has_module_perms(self, app_label):
         """
-        The has_module_perms function is used to determine if the user has permissions to view any of the app’s models.
+        The has_module_perms function is used to determine
+        if the user has permissions to view any of the app’s models.
         This function returns True if the user is an active superuser.
 
         :param self: Represent the instance of the class

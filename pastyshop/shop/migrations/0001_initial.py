@@ -7,81 +7,155 @@ import parler.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'category',
-                'verbose_name_plural': 'categories',
+                "verbose_name": "category",
+                "verbose_name_plural": "categories",
             },
             bases=(parler.models.TranslatableModel, models.Model),
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(blank=True, upload_to='products/%Y')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('available', models.BooleanField(default=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='products', to='shop.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(blank=True, upload_to="products/%Y"),
+                ),
+                (
+                    "price",
+                    models.DecimalField(decimal_places=2, max_digits=10),
+                ),
+                ("available", models.BooleanField(default=True)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                (
+                    "category",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="products",
+                        to="shop.category",
+                    ),
+                ),
             ],
             bases=(parler.models.TranslatableModel, models.Model),
         ),
         migrations.CreateModel(
-            name='CategoryTranslation',
+            name="CategoryTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('name', models.CharField(max_length=200)),
-                ('slug', models.SlugField(max_length=200, unique=True)),
-                ('master', parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='shop.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("slug", models.SlugField(max_length=200, unique=True)),
+                (
+                    "master",
+                    parler.fields.TranslationsForeignKey(
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="translations",
+                        to="shop.category",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'category Translation',
-                'db_table': 'shop_category_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
+                "verbose_name": "category Translation",
+                "db_table": "shop_category_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
             },
             bases=(parler.models.TranslatableModel, models.Model),
         ),
         migrations.CreateModel(
-            name='ProductTranslation',
+            name="ProductTranslation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language_code', models.CharField(db_index=True, max_length=15, verbose_name='Language')),
-                ('name', models.CharField(max_length=200)),
-                ('slug', models.SlugField(max_length=200)),
-                ('description', models.TextField(blank=True)),
-                ('master', parler.fields.TranslationsForeignKey(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='translations', to='shop.product')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "language_code",
+                    models.CharField(
+                        db_index=True, max_length=15, verbose_name="Language"
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("slug", models.SlugField(max_length=200)),
+                ("description", models.TextField(blank=True)),
+                (
+                    "master",
+                    parler.fields.TranslationsForeignKey(
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="translations",
+                        to="shop.product",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'product Translation',
-                'db_table': 'shop_product_translation',
-                'db_tablespace': '',
-                'managed': True,
-                'default_permissions': (),
-                'unique_together': {('language_code', 'master')},
+                "verbose_name": "product Translation",
+                "db_table": "shop_product_translation",
+                "db_tablespace": "",
+                "managed": True,
+                "default_permissions": (),
+                "unique_together": {("language_code", "master")},
             },
             bases=(parler.models.TranslatableModel, models.Model),
         ),
         migrations.AddIndex(
-            model_name='product',
-            index=models.Index(fields=['-created'], name='shop_produc_created_ef211c_idx'),
+            model_name="product",
+            index=models.Index(
+                fields=["-created"], name="shop_produc_created_ef211c_idx"
+            ),
         ),
         migrations.AlterUniqueTogether(
-            name='categorytranslation',
-            unique_together={('language_code', 'master')},
+            name="categorytranslation",
+            unique_together={("language_code", "master")},
         ),
     ]

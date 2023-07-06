@@ -4,36 +4,64 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CustomUser',
+            name="CustomUser",
             fields=[
-                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('first_name', models.CharField(default=None, max_length=20)),
-                ('last_name', models.CharField(default=None, max_length=20)),
-                ('middle_name', models.CharField(blank=True, max_length=20, null=True)),
-                ('phone_number', models.CharField(blank=True, default=None, max_length=20, null=True)),
-                ('email', models.EmailField(default=None, max_length=100, unique=True)),
-                ('password', models.CharField(default=None, max_length=255)),
-                ('city', models.CharField(blank=True, max_length=50, null=True)),
-                ('street', models.CharField(blank=True, max_length=50, null=True)),
-                ('house_number', models.CharField(blank=True, max_length=10, null=True)),
-                ('apartment_number', models.CharField(blank=True, max_length=10, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('is_active', models.BooleanField(default=True)),
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('is_staff', models.BooleanField(default=False)),
-                ('is_superuser', models.BooleanField(default=False)),
+                (
+                    "last_login",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="last login"
+                    ),
+                ),
+                ("first_name", models.CharField(default=None, max_length=20)),
+                ("last_name", models.CharField(default=None, max_length=20)),
+                (
+                    "middle_name",
+                    models.CharField(blank=True, max_length=20, null=True),
+                ),
+                (
+                    "phone_number",
+                    models.CharField(
+                        blank=True, default=None, max_length=20, null=True
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        default=None, max_length=100, unique=True
+                    ),
+                ),
+                ("password", models.CharField(default=None, max_length=255)),
+                (
+                    "city",
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    "street",
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    "house_number",
+                    models.CharField(blank=True, max_length=10, null=True),
+                ),
+                (
+                    "apartment_number",
+                    models.CharField(blank=True, max_length=10, null=True),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("is_active", models.BooleanField(default=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("is_staff", models.BooleanField(default=False)),
+                ("is_superuser", models.BooleanField(default=False)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]
