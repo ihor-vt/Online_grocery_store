@@ -56,6 +56,6 @@ The "Online Food Store" project utilizes the following technologies and librarie
 
 ## Author
 
-The "Online Food Store" project was developed by [Ihor Voitiuk](https://github.com/IhorVoitiuk).
+The "Online Food Store" project was developed by [Ihor Voitiuk](https://github.com/ihor-vt).
 
 ---
