@@ -2,6 +2,10 @@
 
 This repository contains the code for the "Online Food Store" web application. Below is a detailed description of the project and the technologies used.
 
+Video Preview:
+
+[![Video Preview](https://img.youtube.com/vi/ooV965zULPk/0.jpg)](https://www.youtube.com/watch?v=ooV965zULPk)
+
 ## Project Overview
 
 The "Online Food Store" is an online grocery store where users can order food products. The project provides the following features:
